@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 2f;
+    public static float speed;
     public float jumpAmount = 5;
     private bool jumpPressed;
     Rigidbody rb;
     // Start is called before the first frame update
     void Start()
     {
+        speed = 3f;
         rb = GetComponent<Rigidbody>();
     }
 
@@ -30,12 +31,13 @@ public class PlayerMovement : MonoBehaviour
         Vector3 moveVector = new Vector3(moveHorizontal, rb.velocity.y, moveVertical);
         moveVector.x *= speed;
         moveVector.z *= speed;
-        rb.velocity = (moveVector);
+        rb.velocity = moveVector;
         if(jumpPressed){
-            rb.velocity = new Vector3(moveHorizontal, jumpAmount, moveVertical);
+            moveVector.y = jumpAmount;
+            rb.velocity = moveVector;//new Vector3(moveHorizontal, jumpAmount, moveVertical);
             jumpPressed = false;
         }
-       // rb.angularVelocity = Vector3.zero;
+     
 
     }
 
