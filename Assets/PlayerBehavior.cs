@@ -43,15 +43,14 @@ public class PlayerBehavior : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Enemy"))
         {
-            LevelManager lm = FindObjectOfType<LevelManager>();
-            lm.LevelLost();
+            FindObjectOfType<LevelManager>().LevelLost();
             Destroy(gameObject);
         }
     }
     
     void Distract()
     {
-        jumpSFX.Play();
+        distractSFX.Play();
         //player throws item
     }
     
