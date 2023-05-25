@@ -595,6 +595,7 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
+  - component: {fileID: 963194229}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -668,6 +669,19 @@ Transform:
   m_Father: {fileID: 1729737652}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &963194229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 586a82186fb188e45a241582f8043549, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseSensitivity: 200
 --- !u!1 &1009910102
 GameObject:
   m_ObjectHideFlags: 0
@@ -1254,9 +1268,10 @@ GameObject:
   - component: {fileID: 1784413832}
   - component: {fileID: 1784413831}
   - component: {fileID: 1784413830}
-  - component: {fileID: 1784413834}
-  - component: {fileID: 1784413835}
   - component: {fileID: 1784413836}
+  - component: {fileID: 1784413838}
+  - component: {fileID: 1784413837}
+  - component: {fileID: 1784413839}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1344,35 +1359,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1784413834
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1784413829}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24abbe3a4c500484f85374ace9f7a3a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jumpAmount: 3.05
---- !u!54 &1784413835
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1784413829}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 80
-  m_CollisionDetection: 0
 --- !u!114 &1784413836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1385,6 +1371,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bf7e6f3197a99b438b6bfe61307fca0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1784413837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1784413829}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24abbe3a4c500484f85374ace9f7a3a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpAmount: 5
+--- !u!143 &1784413838
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1784413829}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1784413839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1784413829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76d9064f31e53554384ff897eb8009fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpHeight: 10
+  gravity: 9.81
+  airControl: 5
 --- !u!1001 &1798312911
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1476,7 +1508,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ce94aafbe570de45b17626b457b4afd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingStamina: 7
+  startingStamina: 100
   defaultSpeed: 3
   depletionSpeed: 2
   scoreText: {fileID: 1107602396}

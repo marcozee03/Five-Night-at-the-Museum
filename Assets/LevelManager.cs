@@ -22,6 +22,8 @@ public class LevelManager : MonoBehaviour
     public float depletionSpeed = 2;
     public Text scoreText;
     public Text staminaText;
+    
+
 
     // Start is called before the first frame update
     void Start()
@@ -32,9 +34,13 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(stamina > 0){
+        if(stamina > 0 && PlayerMove.isMoving){
         //Reduces stamina over time
         stamina -= Time.deltaTime * depletionSpeed;
+        }
+        else if(stamina > 0 && !PlayerMove.isMoving){
+            //do nothing
+
         }
         else{
             stamina = 0.0f;
@@ -43,11 +49,11 @@ public class LevelManager : MonoBehaviour
         SetStaminaText();
 
         if(stamina > 0){
-            PlayerMovement.speed = defaultSpeed;
+            PlayerMove.moveSpeed = defaultSpeed;
 
         }
         else{
-            PlayerMovement.speed = defaultSpeed / 2;
+            PlayerMove.moveSpeed = defaultSpeed / 2;
         }
     }
 

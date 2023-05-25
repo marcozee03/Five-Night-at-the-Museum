@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    //movement using rigidbody Note: need to add rigidBody again if going to use 
+    
     public static float speed;
     public float jumpAmount = 5;
     private bool jumpPressed;
@@ -40,5 +42,7 @@ public class PlayerMovement : MonoBehaviour
      
 
     }
+    
+
 
 }
