@@ -13,7 +13,7 @@ public class MouseLook : MonoBehaviour
     void Start()
     {
         //getting reference to parent object
-        playerBody = transform.parent.parent.transform;
+        playerBody = transform.parent.transform;
 
         //hiding and locking cursor 
         Cursor.visible = false;
