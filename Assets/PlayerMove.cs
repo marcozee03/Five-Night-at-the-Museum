@@ -5,9 +5,13 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
 // movement using Character Controller
+
     public static float moveSpeed = 10;
     public static bool isMoving;
+    
     public float jumpHeight = 10;
+    
+    [Header("Physics")]
     public float gravity = 9.81f;
     public float airControl = 5;
     private CharacterController controller;

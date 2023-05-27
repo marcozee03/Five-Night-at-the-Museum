@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     public float walkSpeed;
     public float sprintSpeed;
     public float jumpHeight;
-    public float gravity;
+     public float gravity;
     public float maxStamina;
     public float staminaRecoveryRate;
     public float staminaLossRate;
@@ -34,34 +34,59 @@ public class PlayerController : MonoBehaviour
         HandleLateral();
         HandleVertical();
         Move();
+        jumpPressed = false;
     }
     #endregion
     #region Movement
     private void HandleLateral()
+    {
+        if (controller.isGrounded)
+        {
+            HandleGroundLateral();
+        }
+        else
+        {
+            HandleAerialLateral();
+        }
+    }
+    private void HandleGroundLateral()
     {
         
         float TopSpeed = sprinting ? sprintSpeed : walkSpeed;
         float accel = controller.isGrounded ? acceleration : airAcceleration;
         targetVelocity = (transform.right * horizontalInput + transform.forward * verticalInput) * Mathf.MoveTowards(LateralSpeed, TopSpeed, accel * Time.fixedDeltaTime);
     }
+    private void HandleAerialLateral()
+    {
+        float TopSpeed = sprinting ? sprintSpeed : walkSpeed;
+        targetVelocity = (transform.right * horizontalInput + transform.forward * verticalInput) * Mathf.MoveTowards(LateralSpeed, TopSpeed, airAcceleration * Time.fixedDeltaTime);
+    }
     private void HandleVertical()
     {
         float y = Speed.y;
-        if (!controller.isGrounded)
-        {
             y -= gravity * Time.fixedDeltaTime;
+        if (jumpPressed && controller.isGrounded)
+        {
+            
+            y = Mathf.Sqrt(2 * gravity * jumpHeight);
+            Debug.Log("JumpSpeedApplied" + y);
         }
-        else
+        else if (controller.isGrounded)
         {
             y = 0;
         }
         targetVelocity = new Vector3(targetVelocity.x, y, targetVelocity.z);
+        //Debug.Log(targetVelocity);
     }
-
-
     #endregion
     //called at the end of update applies the speed calculated by HandleLateral and HandleVertical
     private void Move() {
+        if(targetVelocity.y > 0)
+        {
+            Debug.Log(targetVelocity.y);
+        }
+        //controller.SimpleMove(targetVelocity);
+        //controller.Move(new Vector3(0,targetVelocity.y * Time.fixedDeltaTime));
         controller.Move(targetVelocity * Time.fixedDeltaTime);
     }
     #region Unity InputSystem Events
@@ -76,12 +101,15 @@ public class PlayerController : MonoBehaviour
     bool jumpPressed = false;
     public void Jump(InputAction.CallbackContext context)
     {
-        Debug.Log(controller.isGrounded);
-        if (context.performed && controller.isGrounded)
+        if (context.started)
         {
-            Debug.Log("Doing");
-            controller.Move(new Vector3(Speed.x, Mathf.Sqrt(2 * jumpHeight * gravity),Speed.z) * Time.deltaTime);
+            jumpPressed = true;
         }
+    }
+
+    public void TriggerSprint(InputAction.CallbackContext context)
+    {
+        sprinting = !context.canceled;
     }
     #endregion
 }
