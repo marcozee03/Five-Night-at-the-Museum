@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class NewBehaviourScript : MonoBehaviour
 {
+    public GameObject projectilePrefab;
+    public float throwSpeed = 100;
+    //public AudioClip throwSFX;
     bool collected = false;
 
     // Start is called before the first frame update
@@ -15,7 +18,14 @@ public class NewBehaviourScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetButtonDown("Fire1"))
+        {
+            GameObject projectile = Instantiate(projectilePrefab, 
+                transform.position + transform.forward, transform.rotation) as GameObject;
+            Rigidbody rb = projectile.GetComponent<Rigidbody>();
+            rb.AddForce(transform.forward * throwSpeed, ForceMode.VelocityChange);
+            //AudioSource.PlayClipAtPoint(throwSFX, transform.position);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -24,5 +34,6 @@ public class NewBehaviourScript : MonoBehaviour
             collected = true;
             LevelManager.distractions += 1;
             Destroy(gameObject);
+        }
     }
 }
