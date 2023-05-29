@@ -127,3 +127,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ed04d7af5ad0c04c8d6ed5e27dad13d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 3720968200888743080, guid: 8e0ca08ba3ff99943945b6776702faab, type: 3}
+  StaminaAmount: 30
