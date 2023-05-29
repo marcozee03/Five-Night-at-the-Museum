@@ -89,7 +89,7 @@ public class PlayerMove : MonoBehaviour
         }
         if(!sprinting)
         {
-            ReplenishStamina(StaminaRecoveryRate* Time.deltaTime);
+            ReplenishStamina(StaminaRecoveryRate * Time.deltaTime);
         }
     }
     public void ReplenishStamina(float amount)
