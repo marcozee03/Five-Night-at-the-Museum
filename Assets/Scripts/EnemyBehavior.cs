@@ -55,21 +55,24 @@ public class EnemyBehavior : MonoBehaviour
             if(Mathf.Abs(angle) > 90 && Mathf.Abs(angle) < 270)
             {
                 //playerInView = true;
+                return true;
             }
             RaycastHit hit;
-            if(Physics.Raycast(transform.position, transform.forward, out hit, range))
+            if(Physics.Raycast(transform.position, transform.forward, out hit, detectionRange))
             {
                 if(hit.transform.name == "Player")
                 {
                     //playerInView = true;
+                    return true;
                 }
             }
         }
+        return false;
     }
 
     void moveRandom()
     {
-        GameObject[] randomSpots = FindGameObjectsWithTag("Random");
+        GameObject[] randomSpots = GameObject.FindGameObjectsWithTag("Random");
         //GameObject[] listOfRandom = randomSpots; //does this change original list?
         int index = 0;
         if(!isMoving)

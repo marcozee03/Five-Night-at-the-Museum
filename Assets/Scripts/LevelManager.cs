@@ -12,6 +12,10 @@ public class LevelManager : MonoBehaviour
     public Text scoreText;
     public Text staminaText;
 
+    public static int distractions;
+
+    public static bool isGameOver;
+
     // Update is called once per frame
     void Update()
     {
