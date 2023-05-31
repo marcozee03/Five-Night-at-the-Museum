@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 public abstract class InteractableObject : MonoBehaviour, IInteractble
 {
-    public string HoverTextController()
+    virtual public string HoverTextController()
     {
         return "press (A) to interact";
     }
 
-    public string HoverTextMnK()
+    virtual public string HoverTextMnK()
     {
         return "press[F] to interact";
     }

@@ -7,7 +7,11 @@ public class GemBehavior : InteractableObject
     public int Value = 100;
     public override void Interact(PlayerController player)
     {
-        LevelManager.points += 200;
+        HUDManager.points += Value;
         Destroy(gameObject);
+    }
+    override public string HoverTextMnK()
+    {
+        return "[F] to Collect [$" + Value + "]";
     }
 }

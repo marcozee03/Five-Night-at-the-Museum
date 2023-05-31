@@ -12,4 +12,8 @@ public class BatteryPickup : InteractableObject
             player.gameObject.GetComponentInChildren<FlashlightBehavior>().batteryLife += this.batteryAmount;
         Destroy(gameObject);
     }
+    public override string HoverTextMnK()
+    {
+        return "[F] pickup Battery [" + batteryAmount * 10 + "%]";
+    }
 }

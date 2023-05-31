@@ -32,7 +32,7 @@ public class DistractItem : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player")){
             collected = true;
-            LevelManager.distractions += 1;
+            HUDManager.distractions += 1;
             Destroy(gameObject);
         }
     }

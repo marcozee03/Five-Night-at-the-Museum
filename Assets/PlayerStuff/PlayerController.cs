@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour
     {
         HandleMovement();
         HandleStamina();
+        HoverInteractableObject();
     }
     #endregion
 
@@ -124,6 +125,24 @@ public class PlayerController : MonoBehaviour
     #region interact
     public float maxObjectDistance = 1;
 
+    private bool HoveredIsInteractble(RaycastHit hovered, out InteractableObject obj){
+        obj= hovered.collider.gameObject.GetComponent<InteractableObject>();
+        return obj != null;
+    }
+    private void HoverInteractableObject()
+    {
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out RaycastHit hitInfo, maxObjectDistance) && HoveredIsInteractble(hitInfo, out InteractableObject obj))
+        {
+            if (obj != null)
+            {
+                GameObject.FindFirstObjectByType<HUDManager>().SetHoverText(obj.HoverTextMnK());
+            }
+        }        
+        else
+        {
+            GameObject.FindFirstObjectByType<HUDManager>().SetHoverText("");
+        }
+    }
     public void Interact(InputAction.CallbackContext context)
     {
         //Debug.Log("context given" + context.started);

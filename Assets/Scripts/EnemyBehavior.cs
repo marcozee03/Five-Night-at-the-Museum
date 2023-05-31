@@ -26,7 +26,7 @@ public class EnemyBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!LevelManager.isGameOver)
+        if(!HUDManager.isGameOver)
         {
             Detected();
             if(playerInView)
