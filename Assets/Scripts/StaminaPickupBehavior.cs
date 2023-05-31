@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StaminaPickupBehavior : MonoBehaviour
+public class StaminaPickupBehavior : InteractableObject
 {
     public PlayerMove player;
     public float StaminaAmount = 30;
@@ -17,14 +17,11 @@ public class StaminaPickupBehavior : MonoBehaviour
     {
 
     }
-    private void OnTriggerEnter(Collider other)
+    override
+    public void Interact(PlayerController player)
     {
-        if (other.gameObject.CompareTag("Player"))
-        {
-
-            other.GetComponent<PlayerMove>().ReplenishStamina(StaminaAmount);
+            player.ReplenishStamina(StaminaAmount);
             Destroy(gameObject);
-        }
     }
     //can add OnDestroy if more functionality desired, but not needed in current state
 }

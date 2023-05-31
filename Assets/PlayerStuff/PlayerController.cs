@@ -5,12 +5,11 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     #region Adjustable Stats
-    public float acceleration;
     public float airAcceleration;
     public float walkSpeed;
     public float sprintSpeed;
     public float jumpHeight;
-     public float gravity;
+    public float gravity;
     public float maxStamina;
     public float staminaRecoveryRate;
     public float staminaLossRate;
@@ -20,6 +19,7 @@ public class PlayerController : MonoBehaviour
 
     #region Internal References
     private bool sprinting = false;
+    public float CurrentStamina { get; private set; }
     private Vector3 targetVelocity; // the speed the player will be moving at the end of this frame;
     Vector3 Speed => controller.velocity;
     float LateralSpeed => Mathf.Sqrt(Mathf.Pow(controller.velocity.x, 2) + Mathf.Pow(controller.velocity.z, 2)); // the current speed combining the X and Z components
@@ -29,66 +29,120 @@ public class PlayerController : MonoBehaviour
         controller = GetComponent<CharacterController>();
     }
 
-    private void FixedUpdate()
+    private void Start()
     {
-        HandleLateral();
-        HandleVertical();
-        Move();
-        jumpPressed = false;
+        CurrentStamina = maxStamina;
+    }
+
+    private void Update()
+    {
+        HandleMovement();
+        HandleStamina();
     }
     #endregion
+
     #region Movement
-    private void HandleLateral()
+    Vector3 input, moveDirection;
+    private void HandleMovement()
     {
+        //getting inputs
+        // setting vector to combine inputs 
+        //normalizing this vector makes sure that diagonal movements are not faster than horizontal or vertical movements 
+        input = (transform.right * horizontalInput + transform.forward * verticalInput);
+        input *= (CanSprint & CurrentStamina > 0) ? sprintSpeed : walkSpeed;
+
         if (controller.isGrounded)
+        { //isGrounded = is touching ground 
+          //can jump
+            HandleGrounded();
+        }
+
+        else
         {
-            HandleGroundLateral();
+            HandleAerial();
+
+        }
+        moveDirection.y -= gravity * Time.deltaTime;
+        //move player using CharacterController.Move(...) function
+        controller.Move(moveDirection * Time.deltaTime);
+    }
+    private void HandleGrounded()
+    {
+        moveDirection = input;
+        if (CanJump)
+        {
+            moveDirection.y = Mathf.Sqrt(2 * jumpHeight * gravity);
         }
         else
         {
-            HandleAerialLateral();
+            moveDirection.y = 0.0f;
         }
     }
-    private void HandleGroundLateral()
+
+    private void HandleAerial()
     {
-        
-        float TopSpeed = sprinting ? sprintSpeed : walkSpeed;
-        float accel = controller.isGrounded ? acceleration : airAcceleration;
-        targetVelocity = (transform.right * horizontalInput + transform.forward * verticalInput) * Mathf.MoveTowards(LateralSpeed, TopSpeed, accel * Time.fixedDeltaTime);
-    }
-    private void HandleAerialLateral()
-    {
-        float TopSpeed = sprinting ? sprintSpeed : walkSpeed;
-        targetVelocity = (transform.right * horizontalInput + transform.forward * verticalInput) * Mathf.MoveTowards(LateralSpeed, TopSpeed, airAcceleration * Time.fixedDeltaTime);
-    }
-    private void HandleVertical()
-    {
-        float y = Speed.y;
-            y -= gravity * Time.fixedDeltaTime;
-        if (jumpPressed && controller.isGrounded)
-        {
-            
-            y = Mathf.Sqrt(2 * gravity * jumpHeight);
-            Debug.Log("JumpSpeedApplied" + y);
-        }
-        else if (controller.isGrounded)
-        {
-            y = 0;
-        }
-        targetVelocity = new Vector3(targetVelocity.x, y, targetVelocity.z);
-        //Debug.Log(targetVelocity);
+        // in air 
+        input.y = moveDirection.y;
+        moveDirection = Vector3.Lerp(moveDirection, input, airAcceleration * Time.deltaTime);
     }
     #endregion
-    //called at the end of update applies the speed calculated by HandleLateral and HandleVertical
-    private void Move() {
-        if(targetVelocity.y > 0)
+
+    #region Stamina
+    private float TimeExhaustedStamina = float.MinValue;
+    private void HandleStamina()
+    {
+        if (CanSprint && (Mathf.Abs(controller.velocity.x) > .1 || Mathf.Abs(controller.velocity.z) > .1))
         {
-            Debug.Log(targetVelocity.y);
+            ReduceStamina(staminaLossRate * Time.deltaTime);
         }
-        //controller.SimpleMove(targetVelocity);
-        //controller.Move(new Vector3(0,targetVelocity.y * Time.fixedDeltaTime));
-        controller.Move(targetVelocity * Time.fixedDeltaTime);
+        if (LateralSpeed <= walkSpeed || !sprinting)
+        {
+            ReplenishStamina(staminaRecoveryRate * Time.deltaTime);
+        }
     }
+    public void ReplenishStamina(float amount)
+    {
+        CurrentStamina += amount;
+        CurrentStamina = Mathf.Clamp(CurrentStamina, 0, maxStamina);
+
+    }
+
+    private bool CanSprint => sprinting && !Exhausted;
+    public bool Exhausted => Time.time - TimeExhaustedStamina < RecoveryCooldown;
+
+    public void ReduceStamina(float amount)
+    {
+        CurrentStamina -= amount;
+        CurrentStamina = Mathf.Clamp(CurrentStamina, 0, maxStamina);
+        if (CurrentStamina == 0 && !Exhausted)
+        {
+            TimeExhaustedStamina = Time.time;
+        }
+    }
+    #endregion
+
+    #region interact
+    public float maxObjectDistance = 1;
+
+    public void Interact(InputAction.CallbackContext context)
+    {
+        //Debug.Log("context given" + context.started);
+        if (!context.started) return;
+        string debugString = "Interact Pressed";
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out RaycastHit hitInfo, maxObjectDistance))
+        {
+            debugString += " Ray collided";
+            InteractableObject obj = hitInfo.collider.gameObject.GetComponent<InteractableObject>();
+            if (obj != null)
+            {
+                debugString += " found interactableObject";
+                obj.Interact(GetComponent<PlayerController>());
+            }
+        }
+        Debug.Log(debugString);
+    }
+    #endregion
+
     #region Unity InputSystem Events
     private float horizontalInput;
     private float verticalInput;
@@ -98,13 +152,21 @@ public class PlayerController : MonoBehaviour
         horizontalInput = input.x;
         verticalInput = input.y;
     }
+
     bool jumpPressed = false;
+    bool jumpHeld = false;
+    private float timeJumpWasPressed = 0;
+    public float JumpBuffer = .5f;
+    private float TimeSinceJumpWasPressed => Time.time - timeJumpWasPressed;
+    private bool CanJump => controller.isGrounded && TimeSinceJumpWasPressed <= JumpBuffer;
     public void Jump(InputAction.CallbackContext context)
     {
         if (context.started)
         {
-            jumpPressed = true;
+            timeJumpWasPressed = Time.time;
         }
+        jumpPressed = context.started;
+        jumpHeld = context.performed || jumpPressed;
     }
 
     public void TriggerSprint(InputAction.CallbackContext context)

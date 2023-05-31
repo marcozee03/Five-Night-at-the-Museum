@@ -35,12 +35,12 @@ public class FlashlightBehavior : MonoBehaviour
             this.FlashlightOff();
         }
 
-        if (Input.GetKeyDown(KeyCode.F) && this.IsFlashlightOn())
+        if (Input.GetKeyDown(KeyCode.E) && this.IsFlashlightOn())
         {
             this.FlashlightOff();
         }
         else if (
-            Input.GetKeyDown(KeyCode.F)
+            Input.GetKeyDown(KeyCode.E)
             && !this.IsFlashlightOn()
             && this.batteryLife > 0)
         {

@@ -30,7 +30,7 @@ public class LevelManager : MonoBehaviour
 
     void SetStaminaText(){
 
-        staminaText.text = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMove>().currentStamina.ToString("f0");
+        staminaText.text = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().CurrentStamina.ToString("f0");
     }
 
  

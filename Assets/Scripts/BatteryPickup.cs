@@ -2,32 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BatteryPickup : MonoBehaviour
+public class BatteryPickup : InteractableObject
 {
 
     public float batteryAmount = 5;
-
-    private 
-
-    // Start is called before the first frame update
-    void Start()
+    override
+    public void Interact(PlayerController player)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            other.gameObject.GetComponentInChildren<FlashlightBehavior>().batteryLife += this.batteryAmount;
-
-            Destroy(gameObject);
-        }
+            player.gameObject.GetComponentInChildren<FlashlightBehavior>().batteryLife += this.batteryAmount;
+        Destroy(gameObject);
     }
 }

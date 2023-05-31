@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 779916033880768035}
   - component: {fileID: 779916033880768032}
   - component: {fileID: 779916033880768039}
-  - component: {fileID: 779916033880768092}
   - component: {fileID: 779916033880768095}
+  - component: {fileID: 779916033880768092}
   m_Layer: 0
   m_Name: PlayerV2
   m_TagString: Player
@@ -180,28 +180,6 @@ MonoBehaviour:
   m_DefaultActionMap: Default
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &779916033880768092
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 779916033880768036}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21ac91b3896ccf74792000c125441534, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  acceleration: 103.13
-  airAcceleration: 1
-  walkSpeed: 10
-  sprintSpeed: 20
-  jumpHeight: 1
-  gravity: 9.81
-  maxStamina: 100
-  staminaRecoveryRate: 5
-  staminaLossRate: 10
-  RecoveryCooldown: 10
 --- !u!143 &779916033880768095
 CharacterController:
   m_ObjectHideFlags: 0
@@ -220,6 +198,27 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &779916033880768092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 779916033880768036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21ac91b3896ccf74792000c125441534, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  airAcceleration: 1
+  walkSpeed: 10
+  sprintSpeed: 20
+  jumpHeight: 1
+  gravity: 9.81
+  maxStamina: 100
+  staminaRecoveryRate: 5
+  staminaLossRate: 10
+  RecoveryCooldown: 10
 --- !u!1 &779916035204227304
 GameObject:
   m_ObjectHideFlags: 0
