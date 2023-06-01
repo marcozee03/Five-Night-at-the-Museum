@@ -128,3 +128,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Value: 100
+  pointsSFX: {fileID: 8300000, guid: f2efcaf2d93d1f541be827bac6882f55, type: 3}

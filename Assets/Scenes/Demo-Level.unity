@@ -5840,6 +5840,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Value: 100
+  pointsSFX: {fileID: 0}
 --- !u!54 &627145213
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -16608,6 +16609,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Value: 100
+  pointsSFX: {fileID: 0}
 --- !u!54 &821665967
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -16791,6 +16793,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Value: 100
+  pointsSFX: {fileID: 0}
 --- !u!54 &832141887
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -18059,6 +18062,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Value: 100
+  pointsSFX: {fileID: 0}
 --- !u!54 &1014429275
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -23524,6 +23528,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Value: 100
+  pointsSFX: {fileID: 0}
 --- !u!54 &1288828562
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -30831,6 +30836,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Value: 100
+  pointsSFX: {fileID: 0}
 --- !u!54 &1414552009
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -31636,6 +31642,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Value: 100
+  pointsSFX: {fileID: 0}
 --- !u!54 &1570925773
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -31788,6 +31795,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Value: 100
+  pointsSFX: {fileID: 0}
 --- !u!54 &1578175789
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -32064,6 +32072,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Value: 100
+  pointsSFX: {fileID: 0}
 --- !u!54 &1606901105
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -32955,6 +32964,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Value: 100
+  pointsSFX: {fileID: 0}
 --- !u!54 &1802829283
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -34774,6 +34784,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Value: 100
+  pointsSFX: {fileID: 0}
 --- !u!54 &1943970703
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -41403,6 +41414,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Value: 100
+  pointsSFX: {fileID: 0}
 --- !u!54 &2119140641
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -41547,6 +41559,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Value: 100
+  pointsSFX: {fileID: 0}
 --- !u!54 &2140404877
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -41860,11 +41873,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3949530588872323911, guid: 14bc61e7ab6753d4b906fbe2d45880aa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1333.8549
+      value: -1330.521
       objectReference: {fileID: 0}
     - target: {fileID: 3949530588872323911, guid: 14bc61e7ab6753d4b906fbe2d45880aa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -29.8499
+      value: -28.792
       objectReference: {fileID: 0}
     - target: {fileID: 3949530588872323911, guid: 14bc61e7ab6753d4b906fbe2d45880aa, type: 3}
       propertyPath: m_LocalPosition.z
