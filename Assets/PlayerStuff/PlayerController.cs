@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public float maxStamina;
     public float staminaRecoveryRate;
     public float staminaLossRate;
+   
     [Tooltip("how long it takes after they stop sprinting to start recovering stamina")]
     public float RecoveryCooldown;
     #endregion
@@ -44,6 +45,10 @@ public class PlayerController : MonoBehaviour
 
     #region Movement
     Vector3 input, moveDirection;
+    AudioSource [] movementSFXs;
+    float walkSoundBuffer;
+    float sprintSoundBuffer;
+
     private void HandleMovement()
     {
         //getting inputs
@@ -51,6 +56,8 @@ public class PlayerController : MonoBehaviour
         //normalizing this vector makes sure that diagonal movements are not faster than horizontal or vertical movements 
         input = (transform.right * horizontalInput + transform.forward * verticalInput);
         input *= (CanSprint & CurrentStamina > 0) ? sprintSpeed : walkSpeed;
+
+        movementSFXs = GetComponents<AudioSource>();
 
         if (controller.isGrounded)
         { //isGrounded = is touching ground 
@@ -66,6 +73,40 @@ public class PlayerController : MonoBehaviour
         moveDirection.y -= gravity * Time.deltaTime;
         //move player using CharacterController.Move(...) function
         controller.Move(moveDirection * Time.deltaTime);
+        if(walkSoundBuffer > 0){
+            walkSoundBuffer -= Time.deltaTime;
+        }
+       
+        if(sprintSoundBuffer > 0){
+            sprintSoundBuffer -= Time.deltaTime;
+        }
+        
+
+        if(!sprinting && input != Vector3.zero && !movementSFXs[0].isPlaying && walkSoundBuffer <= 0){
+            movementSFXs[1].Stop();
+            movementSFXs[0].Play();
+            walkSoundBuffer = 0.75f;
+
+
+           
+        }
+        else if(sprinting && input != Vector3.zero && !movementSFXs[1].isPlaying && sprintSoundBuffer <= 0){
+            //first movementSFXs element is walking sfx, second is sprinting
+            movementSFXs[0].Stop();
+          
+            movementSFXs[1].Play();
+            sprintSoundBuffer = 0.5f;
+            
+        }
+        
+        else if(input == Vector3.zero){
+            movementSFXs[0].Stop();
+            movementSFXs[1].Stop();
+        }
+        
+
+        
+
     }
     private void HandleGrounded()
     {
