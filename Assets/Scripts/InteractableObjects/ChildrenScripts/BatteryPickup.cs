@@ -9,7 +9,7 @@ public class BatteryPickup : InteractableObject
     override
     public void Interact(PlayerController player)
     {
-            player.gameObject.GetComponentInChildren<FlashlightBehavior>().batteryLife += this.batteryAmount;
+        player.gameObject.GetComponentInChildren<FlashlightBehavior>().batteryLife += this.batteryAmount;
         Destroy(gameObject);
     }
     public override string HoverTextMnK()
