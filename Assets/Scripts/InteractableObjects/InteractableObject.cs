@@ -7,7 +7,7 @@ public abstract class InteractableObject : MonoBehaviour, IInteractble
 {
     virtual public string HoverTextController()
     {
-        return "press (A) to interact";
+        return "press (Y) to interact";
     }
 
     virtual public string HoverTextMnK()
