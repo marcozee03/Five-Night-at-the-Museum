@@ -82,37 +82,39 @@ public class PlayerController : MonoBehaviour
         }
         
 
-        if(!sprinting && input != Vector3.zero && !movementSFXs[0].isPlaying && walkSoundBuffer <= 0){
-            movementSFXs[1].Stop();
+        if(!sprinting && input != Vector3.zero && !movementSFXs[0].isPlaying && walkSoundBuffer <= 0 && controller.isGrounded){
+            if(movementSFXs[1].isPlaying){
+                movementSFXs[1].Stop();
+            }
             movementSFXs[0].Play();
             walkSoundBuffer = 0.75f;
 
 
            
         }
-        else if(sprinting && input != Vector3.zero && !movementSFXs[1].isPlaying && sprintSoundBuffer <= 0){
+        else if(sprinting && input != Vector3.zero && !movementSFXs[1].isPlaying && sprintSoundBuffer <= 0 && controller.isGrounded){
             //first movementSFXs element is walking sfx, second is sprinting
-            movementSFXs[0].Stop();
+            if(movementSFXs[0].isPlaying){
+                movementSFXs[0].Stop();
+            }
           
             movementSFXs[1].Play();
             sprintSoundBuffer = 0.5f;
             
         }
-        
-        else if(input == Vector3.zero){
-            movementSFXs[0].Stop();
-            movementSFXs[1].Stop();
-        }
+     
         
 
         
 
     }
+    
     private void HandleGrounded()
     {
         moveDirection = input;
         if (CanJump)
         {
+            
             moveDirection.y = Mathf.Sqrt(2 * jumpHeight * gravity);
         }
         else
@@ -124,6 +126,8 @@ public class PlayerController : MonoBehaviour
     private void HandleAerial()
     {
         // in air 
+        walkSoundBuffer = 0.2f;
+        sprintSoundBuffer = 0.3f;
         input.y = moveDirection.y;
         moveDirection = Vector3.Lerp(moveDirection, input, airAcceleration * Time.deltaTime);
     }

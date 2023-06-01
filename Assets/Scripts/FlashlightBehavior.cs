@@ -6,13 +6,15 @@ using UnityEngine.UI;
 public class FlashlightBehavior : MonoBehaviour
 {
 
-    private bool flashlightOn;
-
+    
+    public AudioClip flashlightOnSFX;
+    public AudioClip flashlightOffSFX;
     public Light beam;
 
     public float batteryLife = 10;
 
     public Slider batterySlider;
+    private bool flashlightOn;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +39,7 @@ public class FlashlightBehavior : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E) && this.IsFlashlightOn())
         {
+            AudioSource.PlayClipAtPoint(flashlightOffSFX, Camera.main.transform.position);
             this.FlashlightOff();
         }
         else if (
@@ -44,6 +47,7 @@ public class FlashlightBehavior : MonoBehaviour
             && !this.IsFlashlightOn()
             && this.batteryLife > 0)
         {
+            AudioSource.PlayClipAtPoint(flashlightOnSFX , Camera.main.transform.position);
             this.FlashlightOn();
         }
 
