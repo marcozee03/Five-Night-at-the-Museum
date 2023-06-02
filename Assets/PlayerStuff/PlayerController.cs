@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     Vector3 Speed => controller.velocity;
     float LateralSpeed => Mathf.Sqrt(Mathf.Pow(controller.velocity.x, 2) + Mathf.Pow(controller.velocity.z, 2)); // the current speed combining the X and Z components
     CharacterController controller;
-    private void Awake()
+    private void OnValidate()
     {
         controller = GetComponent<CharacterController>();
     }
@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour
 
         movementSFXs = GetComponents<AudioSource>();
 
-        if (controller.isGrounded)
+        if (GroundCheck())
         { //isGrounded = is touching ground 
           //can jump
             HandleGrounded();
@@ -82,7 +82,7 @@ public class PlayerController : MonoBehaviour
         }
         
 
-        if(!sprinting && input != Vector3.zero && !movementSFXs[0].isPlaying && walkSoundBuffer <= 0 && controller.isGrounded){
+        if(!sprinting && input != Vector3.zero && !movementSFXs[0].isPlaying && walkSoundBuffer <= 0 && GroundCheck()){
             if(movementSFXs[1].isPlaying){
                 movementSFXs[1].Stop();
             }
@@ -92,7 +92,7 @@ public class PlayerController : MonoBehaviour
 
            
         }
-        else if(sprinting && input != Vector3.zero && !movementSFXs[1].isPlaying && sprintSoundBuffer <= 0 && controller.isGrounded){
+        else if(sprinting && input != Vector3.zero && !movementSFXs[1].isPlaying && sprintSoundBuffer <= 0 && GroundCheck()){
             //first movementSFXs element is walking sfx, second is sprinting
             if(movementSFXs[0].isPlaying){
                 movementSFXs[0].Stop();
@@ -105,8 +105,6 @@ public class PlayerController : MonoBehaviour
      
         
 
-        
-
     }
     
     private void HandleGrounded()
@@ -117,10 +115,6 @@ public class PlayerController : MonoBehaviour
             
             moveDirection.y = Mathf.Sqrt(2 * jumpHeight * gravity);
         }
-        else
-        {
-            moveDirection.y = 0.0f;
-        }
     }
 
     private void HandleAerial()
@@ -130,6 +124,14 @@ public class PlayerController : MonoBehaviour
         sprintSoundBuffer = 0.3f;
         input.y = moveDirection.y;
         moveDirection = Vector3.Lerp(moveDirection, input, airAcceleration * Time.deltaTime);
+    }
+    #endregion
+
+    #region Collision
+    [Min(0)]public float GroundDistance = .1f;
+    private bool GroundCheck()
+    {
+        return Physics.SphereCast(transform.position, controller.radius,transform.up * -1, out RaycastHit hitInfo ,GroundDistance);
     }
     #endregion
 
@@ -222,7 +224,7 @@ public class PlayerController : MonoBehaviour
     private float timeJumpWasPressed = 0;
     public float JumpBuffer = .5f;
     private float TimeSinceJumpWasPressed => Time.time - timeJumpWasPressed;
-    private bool CanJump => controller.isGrounded && TimeSinceJumpWasPressed <= JumpBuffer;
+    private bool CanJump => GroundCheck() && TimeSinceJumpWasPressed <= JumpBuffer;
     public void Jump(InputAction.CallbackContext context)
     {
         if (context.started)
@@ -236,6 +238,13 @@ public class PlayerController : MonoBehaviour
     public void TriggerSprint(InputAction.CallbackContext context)
     {
         sprinting = !context.canceled;
+    }
+    #endregion
+
+    #region Gizmos
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position - (transform.up * GroundDistance), controller.radius);
     }
     #endregion
 }
