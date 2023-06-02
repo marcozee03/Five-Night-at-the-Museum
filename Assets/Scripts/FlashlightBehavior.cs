@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.InputSystem;
 public class FlashlightBehavior : MonoBehaviour
 {
 
-    
+
     public AudioClip flashlightOnSFX;
     public AudioClip flashlightOffSFX;
     public Light beam;
@@ -14,59 +14,44 @@ public class FlashlightBehavior : MonoBehaviour
     public float batteryLife = 10;
 
     public Slider batterySlider;
-    private bool flashlightOn;
-
+    private bool IsFlashLightOn => this.beam.gameObject.activeSelf;
     // Start is called before the first frame update
     void Start()
     {
-        this.flashlightOn = this.beam.gameObject.activeSelf;
+        SetLight(false);
         this.batterySlider.value = this.batteryLife;
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        if (this.IsFlashlightOn())
-        {
-            this.batteryLife = Mathf.Max(0, this.batteryLife - Time.deltaTime);
-        }
-
-        if (this.batteryLife == 0)
-        {
-            this.FlashlightOff();
-        }
-
-        if (Input.GetKeyDown(KeyCode.E) && this.IsFlashlightOn())
-        {
-            AudioSource.PlayClipAtPoint(flashlightOffSFX, Camera.main.transform.position);
-            this.FlashlightOff();
-        }
-        else if (
-            Input.GetKeyDown(KeyCode.E)
-            && !this.IsFlashlightOn()
-            && this.batteryLife > 0)
-        {
-            AudioSource.PlayClipAtPoint(flashlightOnSFX , Camera.main.transform.position);
-            this.FlashlightOn();
-        }
-
+        ReduceBattery();
         this.batterySlider.value = this.batteryLife;
     }
 
-
-    private void FlashlightOn()
+    public void ToggleFlashLight(InputAction.CallbackContext context)
     {
-        this.beam.gameObject.SetActive(true);
+        Debug.Log(context);
+        if (context.started)
+        {
+            Debug.Log("Flashlight button pressed");
+            this.beam.gameObject.SetActive(!beam.isActiveAndEnabled);
+            AudioSource.PlayClipAtPoint(IsFlashLightOn ? flashlightOffSFX : flashlightOnSFX, transform.position);
+            if (batteryLife == 0)
+            {
+                SetLight(false);
+            }
+        }
     }
-
-    private void FlashlightOff()
+    private void SetLight(bool lightOn)
     {
-        this.beam.gameObject.SetActive(false);
+        beam.gameObject.SetActive(lightOn);
     }
-
-    private bool IsFlashlightOn()
+    private void ReduceBattery()
     {
-        return this.beam.gameObject.activeSelf;
+        if (IsFlashLightOn)
+        {
+            this.batteryLife = Mathf.Max(0, this.batteryLife - Time.deltaTime);
+        }
     }
 }
