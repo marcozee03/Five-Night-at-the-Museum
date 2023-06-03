@@ -52,6 +52,10 @@ public class FlashlightBehavior : MonoBehaviour
         if (IsFlashLightOn)
         {
             this.batteryLife = Mathf.Max(0, this.batteryLife - Time.deltaTime);
+            if(batteryLife == 0)
+            {
+                SetLight(false);
+            }
         }
     }
 }
