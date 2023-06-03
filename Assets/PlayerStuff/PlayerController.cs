@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
 
     #region Internal References
     private bool sprinting = false;
+    public bool DisableMovement = false;
     public float CurrentStamina { get; private set; }
     private Vector3 targetVelocity; // the speed the player will be moving at the end of this frame;
     Vector3 Speed => controller.velocity;
@@ -35,16 +36,21 @@ public class PlayerController : MonoBehaviour
         CurrentStamina = maxStamina;
         
     }
-
+    public void EnableMovement()
+    {
+        DisableMovement = false;
+    }
     private void Update()
     {
-        
-        HandleMovement();
-        HandleStamina();
+        if (!DisableMovement)
+        {
+            HandleMovement();
+            HandleStamina();
+        }
         HoverInteractableObject();
     }
     #endregion
-
+    
     #region Movement
     Vector3 input, moveDirection;
     AudioSource [] movementSFXs;
