@@ -33,10 +33,12 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         CurrentStamina = maxStamina;
+        
     }
 
     private void Update()
     {
+        
         HandleMovement();
         HandleStamina();
         HoverInteractableObject();
