@@ -1622,7 +1622,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh26868
+  m_Name: pb_Mesh70956
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2738,6 +2738,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0034fcfe02f6a2c40b3c258c37e62ed7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreText: {fileID: 1102440243}
+  staminaBar: {fileID: 1783767467}
+  staminaFill: {fileID: 688073465}
+  hoverText: {fileID: 268357013}
 --- !u!1 &317506769 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2029857476372711698, guid: 75432cf207b00b144ae5e833f6466c27, type: 3}
