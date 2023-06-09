@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 4066107379679502}
   - component: {fileID: 33915009217536648}
   - component: {fileID: 23346307433662042}
-  - component: {fileID: -4134319257710823739}
   - component: {fileID: -4330228692115006405}
+  - component: {fileID: 2983980380721035274}
   m_Layer: 0
   m_Name: vase_A_S2
   m_TagString: Untagged
@@ -85,20 +85,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &-4134319257710823739
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1148008505575544}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a0b674d30d7c374d909e4bcd12f06f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Value: 100
-  pointsSFX: {fileID: 8300000, guid: aa553e03bcce6184cba9fba3b63cff20, type: 3}
 --- !u!64 &-4330228692115006405
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -113,3 +99,17 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: d016cee24d2ccd84b958319ab3fcf57e, type: 3}
+--- !u!114 &2983980380721035274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1148008505575544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93dfe96fabe21a44eb0e91cc213b0d77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Value: 100
+  pointsSFX: {fileID: 8300000, guid: aa553e03bcce6184cba9fba3b63cff20, type: 3}

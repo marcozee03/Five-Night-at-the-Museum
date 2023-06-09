@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 4525072466908347461}
   - component: {fileID: 676545972732949472}
   - component: {fileID: 3352760269773670186}
-  - component: {fileID: 6370418873942854414}
   - component: {fileID: 5714126769108382506}
+  - component: {fileID: 9079190695713567746}
   m_Layer: 0
   m_Name: Ancient_Vase
   m_TagString: Untagged
@@ -85,20 +85,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &6370418873942854414
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3857220671185135359}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a0b674d30d7c374d909e4bcd12f06f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Value: 100
-  pointsSFX: {fileID: 0}
 --- !u!64 &5714126769108382506
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -113,3 +99,17 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -8467598034859093779, guid: 1b0aba76540702249af8b6da2bb011f9, type: 3}
+--- !u!114 &9079190695713567746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3857220671185135359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93dfe96fabe21a44eb0e91cc213b0d77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Value: 100
+  pointsSFX: {fileID: 8300000, guid: aa553e03bcce6184cba9fba3b63cff20, type: 3}

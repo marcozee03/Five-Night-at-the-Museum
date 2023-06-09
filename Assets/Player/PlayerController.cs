@@ -29,16 +29,15 @@ public class PlayerController : MonoBehaviour
         DisableMovement = false;
     }
     public float CurrentStamina { get; private set; }
-    private Vector3 targetVelocity; // the speed the player will be moving at the end of this frame;
-    Vector3 Speed => controller.velocity;
     float LateralSpeed => Mathf.Sqrt(Mathf.Pow(controller.velocity.x, 2) + Mathf.Pow(controller.velocity.z, 2)); // the current speed combining the X and Z components
     public CharacterController controller;
     private void OnValidate()
     {
-        if(controller == null)
+        if (controller == null)
         {
             Debug.LogWarning("Please Assign CharacterController to field");
         }
+        
     }
 
     private void Start()
@@ -48,10 +47,11 @@ public class PlayerController : MonoBehaviour
     }
     private void Update()
     {
-            HandleHorizontal();
-            HandleVertical();
-            HandleStamina();
+        HandleHorizontal();
+        HandleVertical();
+        HandleStamina();
         controller.Move(velocity * Time.deltaTime);
+        HoverInteractableObject();
     }
     #endregion
 
@@ -63,29 +63,40 @@ public class PlayerController : MonoBehaviour
         float rotation = -Camera.main.gameObject.transform.eulerAngles.y;
         AHI = horizontalInput * Mathf.Cos(Mathf.Deg2Rad * rotation) - verticalInput * Mathf.Sin(Mathf.Deg2Rad * rotation);
         AVI = horizontalInput * Mathf.Sin(Mathf.Deg2Rad * rotation) + verticalInput * Mathf.Cos(Mathf.Deg2Rad * rotation);
-        float x, z;
+        float x = 0, z = 0;
         float targetSpeed = CanSprint ? sprintSpeed : walkSpeed;
-        if (Mathf.Abs(AHI) > .05)
+        if (!GroundCheck())
         {
-            x = Mathf.MoveTowards(velocity.x, targetSpeed * AHI, acceleration * Time.deltaTime);
+            if (input.magnitude > .01)
+            {
+                x = Mathf.MoveTowards(velocity.x, targetSpeed * AHI, airAcceleration * Time.deltaTime);
+                z = Mathf.MoveTowards(velocity.z, targetSpeed * AVI, airAcceleration * Time.deltaTime);
+            }
+            else
+            {
+                x = Mathf.MoveTowards(velocity.x, 0, deceleration * Time.deltaTime);
+                z = Mathf.MoveTowards(velocity.z, 0, deceleration * Time.deltaTime);
+            }
+        }
+        else if (input.magnitude > .01)
+        {
+            Vector3 forward = transform.forward * Mathf.MoveTowards(LateralSpeed, targetSpeed * verticalInput, acceleration);
+            Vector3 side = transform.right * Mathf.MoveTowards(LateralSpeed, targetSpeed * horizontalInput, acceleration);
+            //Vector3 side = transform.right * (LateralSpeed, targetSpeed * horizontalInput, acceleration);
+            x = forward.x + side.x;
+            z = forward.z + side.z;
         }
         else
         {
-            x = Mathf.MoveTowards(velocity.x, 0, deceleration * Time.deltaTime);
-        }
-        if (Mathf.Abs(AVI) > .05)
-        {
-            z = Mathf.MoveTowards(velocity.z, targetSpeed * AVI, acceleration * Time.deltaTime);
-        }
-        else
-        {
-            z = Mathf.MoveTowards(velocity.z, 0, deceleration * Time.deltaTime);
+            Vector3 forward = transform.forward * Mathf.MoveTowards(LateralSpeed, 0, deceleration);
+            Vector3 side = transform.right * Mathf.MoveTowards(LateralSpeed, 0, deceleration);
+            x = forward.x + side.x;
+            z = forward.z + side.z;
         }
         velocity = new Vector3(x, velocity.y, z);
     }
     private void HandleVertical()
     {
-        velocity.y = Speed.y;
         velocity.y -= gravity * Time.deltaTime;
         if (CanJump)
         {
@@ -106,7 +117,7 @@ public class PlayerController : MonoBehaviour
     private float TimeExhaustedStamina = float.MinValue;
     private void HandleStamina()
     {
-        if (CanSprint && (new Vector2(horizontalInput, verticalInput).magnitude >= walkSpeed / sprintSpeed))      
+        if (CanSprint && (new Vector2(horizontalInput, verticalInput).magnitude >= walkSpeed / sprintSpeed))
         {
             ReduceStamina(staminaLossRate * Time.deltaTime);
         }
@@ -150,12 +161,12 @@ public class PlayerController : MonoBehaviour
         {
             if (obj != null)
             {
-                GameObject.FindFirstObjectByType<HUDManager>().SetHoverText(obj.HoverTextMnK());
+                StatTracker.hud.SetHoverText(obj.HoverText());
             }
         }
         else
         {
-            GameObject.FindFirstObjectByType<HUDManager>().SetHoverText("");
+            StatTracker.hud.SetHoverText("");
         }
     }
     public void Interact(InputAction.CallbackContext context)
@@ -180,9 +191,10 @@ public class PlayerController : MonoBehaviour
     #region Unity InputSystem Events
     private float horizontalInput;
     private float verticalInput;
+    private Vector2 input;
     public void LogMoveInput(InputAction.CallbackContext context)
     {
-        Vector2 input = context.ReadValue<Vector2>();
+        input = context.ReadValue<Vector2>();
         horizontalInput = input.x;
         verticalInput = input.y;
     }
