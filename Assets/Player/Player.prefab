@@ -1,5 +1,99 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &411447609
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 411447610}
+  - component: {fileID: 411447611}
+  m_Layer: 0
+  m_Name: Spot Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &411447610
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 411447609}
+  m_LocalRotation: {x: 0.6427877, y: -0, z: -0, w: -0.7660444}
+  m_LocalPosition: {x: -0.014047291, y: 0.7194275, z: 0.016028583}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8507685064413989155}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 280, y: 0, z: 0}
+--- !u!108 &411447611
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 411447609}
+  m_Enabled: 1
+  serializedVersion: 10
+  m_Type: 0
+  m_Shape: 0
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 1
+  m_Range: 20.18
+  m_SpotAngle: 56.9
+  m_InnerSpotAngle: 21.80208
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+    m_CullingMatrixOverride:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    m_UseCullingMatrixOverride: 0
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingLayerMask: 1
+  m_Lightmapping: 4
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!1 &3801012779913733401
 GameObject:
   m_ObjectHideFlags: 0
@@ -236,13 +330,37 @@ MonoBehaviour:
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: StatTracker, Assembly-CSharp
+        m_MethodName: ControllerDisconnected
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_DeviceRegainedEvent:
     m_PersistentCalls:
       m_Calls: []
   m_ControlsChangedEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: StatTracker, Assembly-CSharp
+        m_MethodName: ToggleControlMode
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
@@ -309,9 +427,37 @@ MonoBehaviour:
     m_ActionId: 8e277666-7f3c-4da2-9d1d-45772884bff0
     m_ActionName: base/Camera[/Mouse/delta,/XInputControllerWindows/rightStick]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3801012780616107118}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: Interact
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 1c1ea8ba-f8b4-4bed-9b36-f7f9066c0205
     m_ActionName: base/Interact[/Keyboard/f]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2021289343}
+        m_TargetAssemblyTypeName: FlashlightBehavior, Assembly-CSharp
+        m_MethodName: ToggleFlashLight
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 39f87b1d-56b3-4a08-8018-647945b29c50
+    m_ActionName: base/Flashlight[/Keyboard/e,/XInputControllerWindows/rightTrigger]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: base
@@ -335,7 +481,7 @@ MonoBehaviour:
   walkSpeed: 10
   sprintSpeed: 15
   jumpHeight: 1
-  gravity: 20
+  gravity: 24.28
   maxStamina: 100
   staminaRecoveryRate: 20
   staminaLossRate: 10
@@ -343,7 +489,7 @@ MonoBehaviour:
   DisableMovement: 0
   controller: {fileID: 3801012780616107104}
   GroundDistance: 0.58
-  maxObjectDistance: 1
+  maxObjectDistance: 5
   JumpBuffer: 0.5
 --- !u!1001 &8507685064414122915
 PrefabInstance:
@@ -362,43 +508,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 38c8e162cafdc5f4bb9150c28d0f1fd9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.556
+      value: 0.56363505
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 38c8e162cafdc5f4bb9150c28d0f1fd9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.33721423
+      value: -0.281
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 38c8e162cafdc5f4bb9150c28d0f1fd9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.42900002
+      value: 0.031000018
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 38c8e162cafdc5f4bb9150c28d0f1fd9, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.6735778
+      value: 0.32798034
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 38c8e162cafdc5f4bb9150c28d0f1fd9, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.6858227
+      value: 0.33164266
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 38c8e162cafdc5f4bb9150c28d0f1fd9, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.19544992
+      value: -0.63132006
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 38c8e162cafdc5f4bb9150c28d0f1fd9, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.19426686
+      value: -0.6195782
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 38c8e162cafdc5f4bb9150c28d0f1fd9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 57.992
+      value: -34.386
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 38c8e162cafdc5f4bb9150c28d0f1fd9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 91.85
+      value: 268.812
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 38c8e162cafdc5f4bb9150c28d0f1fd9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 91.75
+      value: 270.852
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 38c8e162cafdc5f4bb9150c28d0f1fd9, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -415,3 +561,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 38c8e162cafdc5f4bb9150c28d0f1fd9, type: 3}
   m_PrefabInstance: {fileID: 8507685064414122915}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8507685064414156035 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 38c8e162cafdc5f4bb9150c28d0f1fd9, type: 3}
+  m_PrefabInstance: {fileID: 8507685064414122915}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2021289343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8507685064414156035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ced83514c512eb147bf6d48b3afe87d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashlightOnSFX: {fileID: 8300000, guid: 80fc3ed3b3aa8a04e88aa0f3cafd2f3a, type: 3}
+  flashlightOffSFX: {fileID: 8300000, guid: a1c3dcadd4164844c9fc630a146cef36, type: 3}
+  beam: {fileID: 411447611}
+  batteryLife: 10
+  batterySlider: {fileID: 0}
