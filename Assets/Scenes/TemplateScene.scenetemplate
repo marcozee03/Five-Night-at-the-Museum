@@ -15,7 +15,7 @@ MonoBehaviour:
   templateScene: {fileID: 102900000, guid: adaeb7c25ee3cb14da8d2a003e265c51, type: 3}
   templateName: 
   description: 
-  preview: {fileID: 0}
+  preview: {fileID: 8382410468312691132}
   dependencies:
   - dependency: {fileID: 8300000, guid: 80fc3ed3b3aa8a04e88aa0f3cafd2f3a, type: 3}
     instantiationMode: 1
