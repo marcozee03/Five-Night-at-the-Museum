@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,8 @@ public class HUDManager : MonoBehaviour
     public Slider staminaBar;
     public Image staminaFill;
     public Text hoverText;
+    public Slider flashlight;
+    public Text Batteries;
 
     public static int distractions;
 
@@ -23,23 +26,32 @@ public class HUDManager : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         staminaBar.maxValue = player.maxStamina;
+        flashlight.maxValue = 100;
     }
     void Update()
     {
         SetScoreText();
-        SetStaminaText();
+        SetStaminaBar();
+    }
+    public void SetBatteryAmount(float batteryRemaining, int spareBatteries)
+    {
+        Batteries.text = batteryRemaining.ToString("000") + "%\n" + spareBatteries;
+    }
+
+    public void SetFlashlightBar(float batteryRemaining)
+    {
+        flashlight.value = batteryRemaining;
     }
 
     void SetScoreText()
     {
-
         scoreText.text = points.ToString("f0");
     }
     public void SetHoverText(string txt)
     {
         hoverText.text = txt;
     }
-    void SetStaminaText()
+    void SetStaminaBar()
     {
 
         staminaBar.value = player.CurrentStamina;

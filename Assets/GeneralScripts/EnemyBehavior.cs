@@ -34,7 +34,7 @@ public class EnemyBehavior : MonoBehaviour
             if (playerInView)
             {
                 float distance = Vector3.Distance(transform.position, player.position);
-                Debug.Log("player in view");
+                //Debug.Log("player in view");
                 transform.LookAt(player);
                 //transform.position = Vector3.MoveTowards
                 //    (transform.position, player.position, moveSpeed * Time.deltaTime);

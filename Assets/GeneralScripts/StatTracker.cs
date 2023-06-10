@@ -29,7 +29,7 @@ public class StatTracker : MonoBehaviour
     }
     private void OnButtonPressed(InputControl control)
     {
-        Debug.Log(control.device.description.deviceClass);
+        //Debug.Log(control.device.description.deviceClass);
         //if(control.device.description.interfaceName)
         string deviceClass = control.device.description.deviceClass;
         OnController = !(deviceClass.Equals("Keyboard") || deviceClass.Equals("Mouse"));
