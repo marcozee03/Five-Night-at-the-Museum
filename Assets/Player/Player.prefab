@@ -330,37 +330,13 @@ MonoBehaviour:
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: StatTracker, Assembly-CSharp
-        m_MethodName: ControllerDisconnected
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_DeviceRegainedEvent:
     m_PersistentCalls:
       m_Calls: []
   m_ControlsChangedEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: StatTracker, Assembly-CSharp
-        m_MethodName: ToggleControlMode
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
@@ -445,7 +421,7 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2021289343}
-        m_TargetAssemblyTypeName: FlashlightBehavior, Assembly-CSharp
+        m_TargetAssemblyTypeName: Flashlight, Assembly-CSharp
         m_MethodName: ToggleFlashLight
         m_Mode: 0
         m_Arguments:
@@ -458,6 +434,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 39f87b1d-56b3-4a08-8018-647945b29c50
     m_ActionName: base/Flashlight[/Keyboard/e,/XInputControllerWindows/rightTrigger]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2021289343}
+        m_TargetAssemblyTypeName: Flashlight, Assembly-CSharp
+        m_MethodName: Reload
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 6b68b843-f22c-47ca-b4a1-40785babd9d2
+    m_ActionName: base/Reload[/Keyboard/r,/XInputControllerWindows/buttonSouth,/XInputControllerWindows1/buttonSouth,/XInputControllerWindows2/buttonSouth]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: base
@@ -555,7 +547,8 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 6e688abb8c58c9542b22e20032bc1bc2, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: 38c8e162cafdc5f4bb9150c28d0f1fd9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 38c8e162cafdc5f4bb9150c28d0f1fd9, type: 3}
 --- !u!4 &8507685064413989155 stripped
 Transform:
@@ -576,11 +569,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 8507685064414156035}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ced83514c512eb147bf6d48b3afe87d8, type: 3}
+  m_Script: {fileID: 11500000, guid: 35494e316c686ea49827d0fd8b808065, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flashlightOnSFX: {fileID: 8300000, guid: 80fc3ed3b3aa8a04e88aa0f3cafd2f3a, type: 3}
+  flashlightOnSFX: {fileID: 8300000, guid: 1f098031a09fb2b42b382fec9ce62353, type: 3}
   flashlightOffSFX: {fileID: 8300000, guid: a1c3dcadd4164844c9fc630a146cef36, type: 3}
   beam: {fileID: 411447611}
-  batteryLife: 10
-  batterySlider: {fileID: 0}
+  batteryDrainRate: 5
+  spareBatteryRecharge: 50
+  spareBatteries: 0
