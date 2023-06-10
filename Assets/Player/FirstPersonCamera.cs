@@ -33,7 +33,7 @@ public class FirstPersonCamera : MonoBehaviour
     public void CameraMove(InputAction.CallbackContext context)
     {
         Vector2 input = context.ReadValue<Vector2>();
-        moveX = input.x * Sensitivity * Time.deltaTime * 100;
-        moveY = input.y * Sensitivity * Time.deltaTime * 100;
+        moveX = input.x * Sensitivity;
+        moveY = input.y * Sensitivity;
     }
 }
