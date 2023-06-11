@@ -12,13 +12,13 @@ public class Hidable : InteractableObject
     {
         if (!playerInside)
         {
-            player.DisableMovement = true;
+            player.DisableMovement();
             player.gameObject.transform.position = transform.position + tpOffset;
             playerInside = true;
         }
         else
         {
-            player.Invoke("EnableMovement", .5f);
+            player.Invoke("EnableMovement", Time.fixedDeltaTime);
             player.gameObject.transform.position = transform.position + exitOffset;
             playerInside = false;
         }
@@ -33,5 +33,10 @@ public class Hidable : InteractableObject
             return "[F] to Hide";
         }
         else return "[F] to Exit";
+    }
+
+    public override string HoverTextController()
+    {
+        return "(Y) to hide";
     }
 }
