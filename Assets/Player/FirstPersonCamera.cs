@@ -24,10 +24,12 @@ public class FirstPersonCamera : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        playerBody.Rotate(Vector3.up * moveX);
-        pitch -= moveY;
-        pitch = Mathf.Clamp(pitch, -90f, 90f);
-        transform.localRotation = Quaternion.Euler(pitch, 0, 0);
+        if(!LevelManager.viewingNumpad){
+            playerBody.Rotate(Vector3.up * moveX);
+            pitch -= moveY;
+            pitch = Mathf.Clamp(pitch, -90f, 90f);
+            transform.localRotation = Quaternion.Euler(pitch, 0, 0);
+        }
     }
 
     public void CameraMove(InputAction.CallbackContext context)

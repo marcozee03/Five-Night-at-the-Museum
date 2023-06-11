@@ -7,7 +7,7 @@ public class KeycardBehavior : InteractableObject
 
 public override void Interact(PlayerController player)
     {
-        LevelManager.hasLevel1Keycard = true;
+        LevelManager.clearConditionSatisfied = true;
         
         Destroy(gameObject);
         
