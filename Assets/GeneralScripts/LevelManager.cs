@@ -94,7 +94,7 @@ public class LevelManager : MonoBehaviour
 
         
         if(!string.IsNullOrEmpty(nextLevel)){
-          Invoke("LoadLevel", 5);
+          Invoke("LoadLevel", fadeSpeed + 0.5f); //extra 0.5f just in case fade to black takes longer
         }
         
 

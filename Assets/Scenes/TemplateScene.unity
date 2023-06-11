@@ -123,17 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &20364292 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3801012780616107118, guid: c6ff52a71689e97468926759ac7ae933, type: 3}
-  m_PrefabInstance: {fileID: 594657979}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 51523067}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16414c37aef28b2458ea3f5f2cb432a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &51523067 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3801012780616107117, guid: c6ff52a71689e97468926759ac7ae933, type: 3}
@@ -288,7 +277,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
     m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
@@ -520,100 +509,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 405960471}
   m_CullTransparentMesh: 1
---- !u!1 &411447609
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 411447610}
-  - component: {fileID: 411447611}
-  m_Layer: 0
-  m_Name: Spot Light
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &411447610
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 411447609}
-  m_LocalRotation: {x: 0.6427877, y: -0, z: -0, w: -0.7660444}
-  m_LocalPosition: {x: -0.014047291, y: 0.7194275, z: 0.016028583}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2021289339}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 280, y: 0, z: 0}
---- !u!108 &411447611
-Light:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 411447609}
-  m_Enabled: 1
-  serializedVersion: 10
-  m_Type: 0
-  m_Shape: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
-  m_Range: 20.18
-  m_SpotAngle: 56.9
-  m_InnerSpotAngle: 21.80208
-  m_CookieSize: 10
-  m_Shadows:
-    m_Type: 0
-    m_Resolution: -1
-    m_CustomResolution: -1
-    m_Strength: 1
-    m_Bias: 0.05
-    m_NormalBias: 0.4
-    m_NearPlane: 0.2
-    m_CullingMatrixOverride:
-      e00: 1
-      e01: 0
-      e02: 0
-      e03: 0
-      e10: 0
-      e11: 1
-      e12: 0
-      e13: 0
-      e20: 0
-      e21: 0
-      e22: 1
-      e23: 0
-      e30: 0
-      e31: 0
-      e32: 0
-      e33: 1
-    m_UseCullingMatrixOverride: 0
-  m_Cookie: {fileID: 0}
-  m_DrawHalo: 0
-  m_Flare: {fileID: 0}
-  m_RenderMode: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingLayerMask: 1
-  m_Lightmapping: 4
-  m_LightShadowCasterMode: 0
-  m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
-  m_ColorTemperature: 6570
-  m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
-  m_UseBoundingSphereOverride: 0
-  m_UseViewFrustumForShadowCasterCull: 1
-  m_ShadowRadius: 0
-  m_ShadowAngle: 0
 --- !u!1 &583042486
 GameObject:
   m_ObjectHideFlags: 0
@@ -795,186 +690,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 3801012780616107118, guid: c6ff52a71689e97468926759ac7ae933, type: 3}
-      propertyPath: gravity
-      value: 24.28
-      objectReference: {fileID: 0}
-    - target: {fileID: 3801012780616107118, guid: c6ff52a71689e97468926759ac7ae933, type: 3}
-      propertyPath: maxObjectDistance
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3801012780616107119, guid: c6ff52a71689e97468926759ac7ae933, type: 3}
-      propertyPath: m_ActionEvents.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 3801012780616107119, guid: c6ff52a71689e97468926759ac7ae933, type: 3}
-      propertyPath: m_ActionEvents.Array.data[5].m_ActionId
-      value: 39f87b1d-56b3-4a08-8018-647945b29c50
-      objectReference: {fileID: 0}
-    - target: {fileID: 3801012780616107119, guid: c6ff52a71689e97468926759ac7ae933, type: 3}
-      propertyPath: m_ActionEvents.Array.data[5].m_ActionName
-      value: base/Flashlight[/Keyboard/e,/XInputControllerWindows/rightTrigger]
-      objectReference: {fileID: 0}
-    - target: {fileID: 3801012780616107119, guid: c6ff52a71689e97468926759ac7ae933, type: 3}
-      propertyPath: m_DeviceLostEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3801012780616107119, guid: c6ff52a71689e97468926759ac7ae933, type: 3}
-      propertyPath: m_ControlsChangedEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3801012780616107119, guid: c6ff52a71689e97468926759ac7ae933, type: 3}
-      propertyPath: m_DeviceLostEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3801012780616107119, guid: c6ff52a71689e97468926759ac7ae933, type: 3}
-      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3801012780616107119, guid: c6ff52a71689e97468926759ac7ae933, type: 3}
-      propertyPath: m_ActionEvents.Array.data[5].m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3801012780616107119, guid: c6ff52a71689e97468926759ac7ae933, type: 3}
       propertyPath: m_DeviceLostEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 356384189}
     - target: {fileID: 3801012780616107119, guid: c6ff52a71689e97468926759ac7ae933, type: 3}
-      propertyPath: m_ControlsChangedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3801012780616107119, guid: c6ff52a71689e97468926759ac7ae933, type: 3}
-      propertyPath: m_DeviceLostEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3801012780616107119, guid: c6ff52a71689e97468926759ac7ae933, type: 3}
-      propertyPath: m_DeviceLostEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ControllerDisconnected
-      objectReference: {fileID: 0}
-    - target: {fileID: 3801012780616107119, guid: c6ff52a71689e97468926759ac7ae933, type: 3}
       propertyPath: m_ControlsChangedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 356384189}
-    - target: {fileID: 3801012780616107119, guid: c6ff52a71689e97468926759ac7ae933, type: 3}
-      propertyPath: m_ControlsChangedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3801012780616107119, guid: c6ff52a71689e97468926759ac7ae933, type: 3}
-      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3801012780616107119, guid: c6ff52a71689e97468926759ac7ae933, type: 3}
-      propertyPath: m_ActionEvents.Array.data[5].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3801012780616107119, guid: c6ff52a71689e97468926759ac7ae933, type: 3}
-      propertyPath: m_ControlsChangedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ToggleControlMode
-      objectReference: {fileID: 0}
-    - target: {fileID: 3801012780616107119, guid: c6ff52a71689e97468926759ac7ae933, type: 3}
-      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+    - target: {fileID: 7756406824121766057, guid: c6ff52a71689e97468926759ac7ae933, type: 3}
+      propertyPath: batterySlider
       value: 
-      objectReference: {fileID: 20364292}
-    - target: {fileID: 3801012780616107119, guid: c6ff52a71689e97468926759ac7ae933, type: 3}
-      propertyPath: m_ActionEvents.Array.data[5].m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 2021289343}
-    - target: {fileID: 3801012780616107119, guid: c6ff52a71689e97468926759ac7ae933, type: 3}
-      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3801012780616107119, guid: c6ff52a71689e97468926759ac7ae933, type: 3}
-      propertyPath: m_ActionEvents.Array.data[5].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3801012780616107119, guid: c6ff52a71689e97468926759ac7ae933, type: 3}
-      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Interact
-      objectReference: {fileID: 0}
-    - target: {fileID: 3801012780616107119, guid: c6ff52a71689e97468926759ac7ae933, type: 3}
-      propertyPath: m_ActionEvents.Array.data[5].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ToggleFlashLight
-      objectReference: {fileID: 0}
-    - target: {fileID: 3801012780616107119, guid: c6ff52a71689e97468926759ac7ae933, type: 3}
-      propertyPath: m_DeviceLostEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: StatTracker, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 3801012780616107119, guid: c6ff52a71689e97468926759ac7ae933, type: 3}
-      propertyPath: m_ControlsChangedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: StatTracker, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 3801012780616107119, guid: c6ff52a71689e97468926759ac7ae933, type: 3}
-      propertyPath: m_ControlsChangedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3801012780616107119, guid: c6ff52a71689e97468926759ac7ae933, type: 3}
-      propertyPath: m_ControlsChangedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3801012780616107119, guid: c6ff52a71689e97468926759ac7ae933, type: 3}
-      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: PlayerController, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 3801012780616107119, guid: c6ff52a71689e97468926759ac7ae933, type: 3}
-      propertyPath: m_ActionEvents.Array.data[5].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: FlashlightBehavior, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 3801012780616107119, guid: c6ff52a71689e97468926759ac7ae933, type: 3}
-      propertyPath: m_DeviceLostEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 3801012780616107119, guid: c6ff52a71689e97468926759ac7ae933, type: 3}
-      propertyPath: m_ControlsChangedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 3801012780616107119, guid: c6ff52a71689e97468926759ac7ae933, type: 3}
-      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 3801012780616107119, guid: c6ff52a71689e97468926759ac7ae933, type: 3}
-      propertyPath: m_ActionEvents.Array.data[5].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 8507685064413989155, guid: c6ff52a71689e97468926759ac7ae933, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.56363505
-      objectReference: {fileID: 0}
-    - target: {fileID: 8507685064413989155, guid: c6ff52a71689e97468926759ac7ae933, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.281
-      objectReference: {fileID: 0}
-    - target: {fileID: 8507685064413989155, guid: c6ff52a71689e97468926759ac7ae933, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.031000018
-      objectReference: {fileID: 0}
-    - target: {fileID: 8507685064413989155, guid: c6ff52a71689e97468926759ac7ae933, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.32798034
-      objectReference: {fileID: 0}
-    - target: {fileID: 8507685064413989155, guid: c6ff52a71689e97468926759ac7ae933, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.33164266
-      objectReference: {fileID: 0}
-    - target: {fileID: 8507685064413989155, guid: c6ff52a71689e97468926759ac7ae933, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.63132006
-      objectReference: {fileID: 0}
-    - target: {fileID: 8507685064413989155, guid: c6ff52a71689e97468926759ac7ae933, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.6195782
-      objectReference: {fileID: 0}
-    - target: {fileID: 8507685064413989155, guid: c6ff52a71689e97468926759ac7ae933, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -34.386
-      objectReference: {fileID: 0}
-    - target: {fileID: 8507685064413989155, guid: c6ff52a71689e97468926759ac7ae933, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 268.812
-      objectReference: {fileID: 0}
-    - target: {fileID: 8507685064413989155, guid: c6ff52a71689e97468926759ac7ae933, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 270.852
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 350247236}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6ff52a71689e97468926759ac7ae933, type: 3}
 --- !u!1 &657920223
@@ -1645,7 +1372,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
     m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
@@ -1865,33 +1592,6 @@ MonoBehaviour:
   staminaBar: {fileID: 174202803}
   staminaFill: {fileID: 1315505457}
   hoverText: {fileID: 240985885}
---- !u!1 &2021289338 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8507685064414156035, guid: c6ff52a71689e97468926759ac7ae933, type: 3}
-  m_PrefabInstance: {fileID: 594657979}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &2021289339 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8507685064413989155, guid: c6ff52a71689e97468926759ac7ae933, type: 3}
-  m_PrefabInstance: {fileID: 594657979}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2021289343
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2021289338}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ced83514c512eb147bf6d48b3afe87d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  flashlightOnSFX: {fileID: 8300000, guid: 80fc3ed3b3aa8a04e88aa0f3cafd2f3a, type: 3}
-  flashlightOffSFX: {fileID: 8300000, guid: a1c3dcadd4164844c9fc630a146cef36, type: 3}
-  beam: {fileID: 411447611}
-  batteryLife: 10
-  batterySlider: {fileID: 350247236}
 --- !u!1 &2134240482
 GameObject:
   m_ObjectHideFlags: 0
