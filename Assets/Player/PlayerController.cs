@@ -44,18 +44,19 @@ public class PlayerController : MonoBehaviour
     private CapsuleCollider col;
     private void OnValidate()
     {
-        if(controller == null)
+        if (controller == null)
         {
-           controller = gameObject.GetComponent<CharacterController>();
-            if(controller == null)
-            {
-                Debug.LogWarning("Please attach a Character Controller component to object called \"" + gameObject.name + "\"");
-            }
+            Debug.LogWarning("Please attach a Character Controller component to object called \"" + gameObject.name + "\"");
         }
-        if(col == null)
+        if (col == null)
         {
-            col = GetComponent<CapsuleCollider>();
+            Debug.LogWarning("Please attach a CapsuleCollider component to object called \"" + gameObject.name + "\""
         }
+    }
+    private void Awake()
+    {
+        controller = gameObject.GetComponent<CharacterController>();
+        col = GetComponent<CapsuleCollider>();
     }
     float LateralSpeed => Mathf.Sqrt(Mathf.Pow(controller.velocity.x, 2) + Mathf.Pow(controller.velocity.z, 2)); // the current speed combining the X and Z components
     private CharacterController controller;
@@ -172,7 +173,7 @@ public class PlayerController : MonoBehaviour
         }
         velocity.y -= gravity * Time.deltaTime;
         Debug.Log(velocity.y);
-        
+
         if (CanJump)
         {
             timeJumpWasPressed = Mathf.NegativeInfinity; //prevents a double jump input if you manage to land on
@@ -201,7 +202,7 @@ public class PlayerController : MonoBehaviour
     }
     private void SnapToGround()
     {
-        if (Physics.Raycast(new Ray(transform.position - new Vector3(0, col.height/2), transform.up * -1), out RaycastHit hit, SnapDistance))
+        if (Physics.Raycast(new Ray(transform.position - new Vector3(0, col.height / 2), transform.up * -1), out RaycastHit hit, SnapDistance))
         {
             controller.Move(new Vector3(0, -hit.distance, 0));
         }
@@ -209,7 +210,7 @@ public class PlayerController : MonoBehaviour
         {
             tempDisableSnapping = true;
         }
-            
+
     }
     private bool GroundCheck()
     {
@@ -306,7 +307,7 @@ public class PlayerController : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(transform.position - (transform.up * GroundDistance), controller.radius);
-        Gizmos.DrawLine(transform.position - new Vector3(0, col.height/2),transform.position - new Vector3(0, col.height + SnapDistance));
+        Gizmos.DrawLine(transform.position - new Vector3(0, col.height / 2), transform.position - new Vector3(0, col.height + SnapDistance));
     }
     #endregion
 }
