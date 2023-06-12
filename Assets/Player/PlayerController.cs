@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
         }
         if (col == null)
         {
-            Debug.LogWarning("Please attach a CapsuleCollider component to object called \"" + gameObject.name + "\""
+            Debug.LogWarning("Please attach a CapsuleCollider component to object called \"" + gameObject.name + "\"");
         }
     }
     private void Awake()
