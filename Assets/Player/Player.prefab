@@ -475,23 +475,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16414c37aef28b2458ea3f5f2cb432a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 10
-  sprintSpeed: 15
+  airAcceleration: 5
   acceleration: 20
   deceleration: 20
-  airAcceleration: 5
-  airDeceleration: 0
+  walkSpeed: 10
+  sprintSpeed: 15
   jumpHeight: 1
-  JumpBuffer: 0.5
   gravity: 24.28
-  RecoveryCooldown: 3
-  GroundDistance: 0.58
-  EnableSnapping: 1
-  SnapDistance: 0.5
   maxStamina: 100
   staminaRecoveryRate: 20
   staminaLossRate: 10
+  RecoveryCooldown: 3
+  DisableMovement: 0
+  controller: {fileID: 3801012780616107104}
+  GroundDistance: 0.58
   maxObjectDistance: 5
+  JumpBuffer: 0.5
 --- !u!1001 &8507685064414122915
 PrefabInstance:
   m_ObjectHideFlags: 0

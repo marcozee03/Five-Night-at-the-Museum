@@ -12,13 +12,13 @@ public class Hidable : InteractableObject
     {
         if (!playerInside)
         {
-            player.DisableMovement();
+            //player.DisableMovement();
             player.gameObject.transform.position = transform.position + tpOffset;
             playerInside = true;
         }
         else
         {
-            player.Invoke("EnableMovement", Time.fixedDeltaTime);
+            //player.Invoke("EnableMovement", Time.fixedDeltaTime);
             player.gameObject.transform.position = transform.position + exitOffset;
             playerInside = false;
         }
