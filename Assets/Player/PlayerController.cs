@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
     #region Internal
     private bool sprinting = false;
     private bool LockPlayer;
-    private CapsuleCollider col;
+    public CapsuleCollider col;
     private void OnValidate()
     {
         if (controller == null)
@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour
         col = GetComponent<CapsuleCollider>();
     }
     float LateralSpeed => Mathf.Sqrt(Mathf.Pow(controller.velocity.x, 2) + Mathf.Pow(controller.velocity.z, 2)); // the current speed combining the X and Z components
-    private CharacterController controller;
+    public CharacterController controller;
     private void Start()
     {
         CurrentStamina = maxStamina;

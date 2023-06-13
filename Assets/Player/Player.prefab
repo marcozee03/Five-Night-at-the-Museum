@@ -208,6 +208,7 @@ GameObject:
   - component: {fileID: 3801012780616107104}
   - component: {fileID: 3801012780616107119}
   - component: {fileID: 3801012780616107118}
+  - component: {fileID: 8637646225137492997}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -477,6 +478,8 @@ MonoBehaviour:
   JumpBuffer: 0.5
   gravity: 24.28
   RecoveryCooldown: 3
+  col: {fileID: 3801012780616107105}
+  controller: {fileID: 3801012780616107104}
   GroundDistance: 0.58
   EnableSnapping: 1
   SnapDistance: 0.5
@@ -484,6 +487,18 @@ MonoBehaviour:
   staminaRecoveryRate: 20
   staminaLossRate: 10
   maxObjectDistance: 5
+--- !u!114 &8637646225137492997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3801012780616107117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dad03d63e8ec82c48b74136c1de69fdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8507685064414122915
 PrefabInstance:
   m_ObjectHideFlags: 0
