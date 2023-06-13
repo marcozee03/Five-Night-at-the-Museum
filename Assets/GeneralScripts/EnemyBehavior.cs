@@ -1,17 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyBehavior : MonoBehaviour
 {
     public Transform player;
     public float moveSpeed = 2;
-    //public AudioClip enemySFX;
+    AudioSource chaseSFX;
+    AudioSource deadSFX;
     Rigidbody rb;
     bool playerInView = false;
     public float detectionRange = 5;
     bool isMoving;
-    UnityEngine.AI.NavMeshAgent myNavMeshAgent;
+    NavMeshAgent myNavMeshAgent;
+    public FSMStates currentState;
+    bool play = true;
+
+    public enum FSMStates
+    {
+        Idle,
+        Patrol,
+        Chase,
+        Attack,
+        Dead
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -22,60 +35,146 @@ public class EnemyBehavior : MonoBehaviour
         {
             player = GameObject.FindGameObjectWithTag("Player").transform;
         }
-        myNavMeshAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+        myNavMeshAgent = GetComponent<NavMeshAgent>();
+        currentState = FSMStates.Patrol;
+        chaseSFX = GetComponent<AudioSource>();
+        deadSFX = gameObject.transform.GetChild(1).GetComponent<AudioSource>();
+        //moveRandom();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(!HUDManager.isGameOver)
+        switch(currentState)
+        {
+            case FSMStates.Patrol:
+                UpdatePatrolState();
+                break;
+            case FSMStates.Chase:
+                UpdateChaseState();
+                break;
+            case FSMStates.Attack:
+                UpdateAttackState();
+                break;
+            case FSMStates.Dead:
+                //UpdateDeadState();
+                break;
+        }
+        if(!LevelManager.isGameOver)
         {
             Detected();
             if (playerInView)
             {
-                float distance = Vector3.Distance(transform.position, player.position);
-                //Debug.Log("player in view");
-                transform.LookAt(player);
-                //transform.position = Vector3.MoveTowards
-                //    (transform.position, player.position, moveSpeed * Time.deltaTime);
-                myNavMeshAgent.SetDestination(player.position);
-                isMoving = true;
-                moveSpeed *= 3;
-                gameObject.GetComponent<Animator>().SetInteger("animState", 1);
-                if (PlayerBehavior.hiding)
-                {
-                    isMoving = false;
-                    playerInView = false;
-                    //Debug.Log("continue patrol");
-                    moveRandom();
-                }
-                // else if(distance > detectionRange)
-                // {
-                //     playerInView = false;
-                //     moveSpeed /= 3;
-                // }
-                //enemySFX.Play(); chase music
+                currentState = FSMStates.Chase;
             }
-            //else if (HUDManager.distracted)
-            //{
-            //    myNavMeshAgent.SetDestination(HUDManager.distractLoc);
-            //    Debug.Log("distracted: " + transform.position + " going to " + HUDManager.distractLoc);
-            //    isMoving = true;
-            //    float distance = Vector3.Distance(transform.position, HUDManager.distractLoc);
-            //    if (distance < 2)
-            //    {
-            //        isMoving = false;
-            //        HUDManager.distracted = false;
-            //        Debug.Log("continue patrol");
-            //        moveRandom();
-            //    }
-            //}
+            else if (LevelManager.distracted)
+            {
+               myNavMeshAgent.SetDestination(LevelManager.distractLoc);
+               //Debug.Log("distracted: " + transform.position + " going to " + LevelManager.distractLoc);
+               isMoving = true;
+               float distance = Vector3.Distance(transform.position, LevelManager.distractLoc);
+               if (distance < 2)
+               {
+                   isMoving = false;
+                   LevelManager.distracted = false;
+                   //Debug.Log("continue patrol");
+                   //moveRandom();
+                   currentState = FSMStates.Patrol;
+               }
+            }
             else
             {
                 //implement random behavior for patrolling
-                moveRandom();
+                //moveRandom();
+                currentState = FSMStates.Patrol;
             }
         }
+        else
+        {
+            //GameObject.FindObjectOfType
+            currentState = FSMStates.Attack;
+        }
+    }
+
+    int index = 0;
+    void UpdatePatrolState()
+    {
+        print("Patrolling!");
+        //if(play)
+        //{
+            chaseSFX.Pause();
+        //     play = false;
+        // }
+        gameObject.GetComponent<Animator>().SetInteger("animState", 2);
+        GameObject[] randomSpots = GameObject.FindGameObjectsWithTag("Random");
+        if (!isMoving)
+        {
+            GameObject thisSpot = randomSpots[index];
+            if (transform.position.x != thisSpot.transform.position.x || transform.position.z != thisSpot.transform.position.z)
+            {
+                // transform.position = Vector3.MoveTowards
+                //     (transform.position, thisSpot.transform.position, moveSpeed * Time.deltaTime);
+                myNavMeshAgent.SetDestination(thisSpot.transform.position);
+
+            }
+            else
+            {
+                index++;
+            }
+            if (index == randomSpots.Length)
+            {
+                index = 0;
+            }
+        }
+    }
+
+    void UpdateChaseState()
+    {
+        print("Chasing!");
+        float distance = Vector3.Distance(transform.position, player.position);
+        transform.LookAt(player);
+        //transform.position = Vector3.MoveTowards
+        //    (transform.position, player.position, moveSpeed * Time.deltaTime);
+        myNavMeshAgent.SetDestination(player.position);
+        isMoving = true;
+        //moveSpeed *= 3;
+        myNavMeshAgent.speed = 7;
+        gameObject.GetComponent<Animator>().SetInteger("animState", 1);
+        //chaseSFX.PlayOneShot(chaseSFX.clip, 0.5f);
+        if (PlayerBehavior.hiding)
+        {
+            isMoving = false;
+            playerInView = false;
+            //Debug.Log("continue patrol");
+            //moveRandom();
+            chaseSFX.Pause();
+            currentState = FSMStates.Patrol;
+        }
+        else if(distance > detectionRange)
+        {
+            playerInView = false;
+            myNavMeshAgent.speed = 3;
+            //moveRandom();
+            chaseSFX.Pause();
+            currentState = FSMStates.Patrol;
+        }
+        if(distance <= 2)
+        {
+            myNavMeshAgent.speed = 0;
+            gameObject.GetComponent<Animator>().SetInteger("animState", 3);
+            FindObjectOfType<LevelManager>().LevelLost();
+            chaseSFX.Pause();
+            currentState = FSMStates.Attack;
+        }
+    }
+
+    void UpdateAttackState()
+    {
+        print("Attack!");
+        myNavMeshAgent.speed = 0;
+        //deadSFX.Play();
+        gameObject.GetComponent<Animator>().SetInteger("animState", 3);
+        FindObjectOfType<LevelManager>().LevelLost();
     }
 
     void Detected()
@@ -101,29 +200,29 @@ public class EnemyBehavior : MonoBehaviour
         }
     }
 
-    int index = 0;
-    void moveRandom()
-    {
-        gameObject.GetComponent<Animator>().SetInteger("animState", 2);
-        GameObject[] randomSpots = GameObject.FindGameObjectsWithTag("Random");
-        if (!isMoving)
-        {
-            GameObject thisSpot = randomSpots[index];
-            if (transform.position.x != thisSpot.transform.position.x || transform.position.z != thisSpot.transform.position.z)
-            {
-                // transform.position = Vector3.MoveTowards
-                //     (transform.position, thisSpot.transform.position, moveSpeed * Time.deltaTime);
-                myNavMeshAgent.SetDestination(thisSpot.transform.position);
+    
+    // void moveRandom()
+    // {
+        
+    // }
 
-            }
-            else
-            {
-                index++;
-            }
-            if (index == randomSpots.Length)
-            {
-                index = 0;
-            }
-        }
-    }
+    // bool IsPlayerInClearFOV()
+    // {
+    //     RaycastHit hit;
+    //     Vector3 directionToPlayer = player.transform.position - enemyEyes.position;
+    //     if(Vector3.Angle(directionToPlayer, enemyEyes.forward) <= fieldOfView)
+    //     {
+    //         if(Physics.Raycast(enemyEyes.position, directionToPlayer, out hit, chaseDistance))
+    //         {
+    //             if(hit.collider.CompareTag("Player"))
+    //             {
+    //                 print("Player in sight!");
+    //                 return true;
+    //             }
+    //             return false;
+    //         }
+    //         return false;
+    //     }
+    //     return false;
+    // }
 }

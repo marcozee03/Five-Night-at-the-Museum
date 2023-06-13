@@ -8,6 +8,8 @@ TagManager:
   - Enemy
   - Projectile
   - NumpadInput
+  - Random
+  - Window
   layers:
   - Default
   - TransparentFX
