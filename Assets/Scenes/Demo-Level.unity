@@ -5097,6 +5097,7 @@ MonoBehaviour:
   player: {fileID: 0}
   moveSpeed: 2
   detectionRange: 5
+  currentState: 0
 --- !u!136 &579420418
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -16248,7 +16249,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh177498
+  m_Name: pb_Mesh387042
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -20351,7 +20352,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh158540
+  m_Name: pb_Mesh386636
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -20585,10 +20586,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2021289343, guid: c6ff52a71689e97468926759ac7ae933, type: 3}
-      propertyPath: batterySlider
-      value: 
-      objectReference: {fileID: 722018616}
     - target: {fileID: 3801012780616107108, guid: c6ff52a71689e97468926759ac7ae933, type: 3}
       propertyPath: m_RootOrder
       value: 0

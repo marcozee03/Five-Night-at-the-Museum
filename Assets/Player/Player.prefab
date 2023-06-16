@@ -468,8 +468,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16414c37aef28b2458ea3f5f2cb432a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 10
-  sprintSpeed: 15
+  walkSpeed: 5
+  sprintSpeed: 10
   acceleration: 20
   deceleration: 20
   airAcceleration: 5

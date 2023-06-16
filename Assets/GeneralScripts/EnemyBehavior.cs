@@ -37,7 +37,7 @@ public class EnemyBehavior : MonoBehaviour
         }
         myNavMeshAgent = GetComponent<NavMeshAgent>();
         currentState = FSMStates.Patrol;
-        chaseSFX = GetComponent<AudioSource>();
+        //chaseSFX = GetComponent<AudioSource>();
         deadSFX = gameObject.transform.GetChild(1).GetComponent<AudioSource>();
         //moveRandom();
     }
@@ -67,7 +67,7 @@ public class EnemyBehavior : MonoBehaviour
             {
                 currentState = FSMStates.Chase;
             }
-            else if (LevelManager.distracted)
+           /* else if (LevelManager.distracted)
             {
                myNavMeshAgent.SetDestination(LevelManager.distractLoc);
                //Debug.Log("distracted: " + transform.position + " going to " + LevelManager.distractLoc);
@@ -81,7 +81,7 @@ public class EnemyBehavior : MonoBehaviour
                    //moveRandom();
                    currentState = FSMStates.Patrol;
                }
-            }
+            }*/
             else
             {
                 //implement random behavior for patrolling
@@ -102,7 +102,7 @@ public class EnemyBehavior : MonoBehaviour
         print("Patrolling!");
         //if(play)
         //{
-            chaseSFX.Pause();
+           // chaseSFX.Pause();
         //     play = false;
         // }
         gameObject.GetComponent<Animator>().SetInteger("animState", 2);
@@ -147,7 +147,7 @@ public class EnemyBehavior : MonoBehaviour
             playerInView = false;
             //Debug.Log("continue patrol");
             //moveRandom();
-            chaseSFX.Pause();
+            //chaseSFX.Pause();
             currentState = FSMStates.Patrol;
         }
         else if(distance > detectionRange)
@@ -155,15 +155,15 @@ public class EnemyBehavior : MonoBehaviour
             playerInView = false;
             myNavMeshAgent.speed = 3;
             //moveRandom();
-            chaseSFX.Pause();
+            //chaseSFX.Pause();
             currentState = FSMStates.Patrol;
         }
         if(distance <= 2)
         {
             myNavMeshAgent.speed = 0;
             gameObject.GetComponent<Animator>().SetInteger("animState", 3);
-            FindObjectOfType<LevelManager>().LevelLost();
-            chaseSFX.Pause();
+            if(!LevelManager.isGameOver)FindObjectOfType<LevelManager>().LevelLost();
+            //chaseSFX.Pause();
             currentState = FSMStates.Attack;
         }
     }
@@ -174,7 +174,9 @@ public class EnemyBehavior : MonoBehaviour
         myNavMeshAgent.speed = 0;
         //deadSFX.Play();
         gameObject.GetComponent<Animator>().SetInteger("animState", 3);
-        FindObjectOfType<LevelManager>().LevelLost();
+        player.GetComponent<PlayerController>().DisableMovement();
+        player.transform.SetParent(transform);
+        if (!LevelManager.isGameOver) FindObjectOfType<LevelManager>().LevelLost();
     }
 
     void Detected()

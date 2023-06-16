@@ -21,7 +21,7 @@ public class PlayerBehavior : MonoBehaviour
             //     //lm.LevelLost();
             //     Destroy(gameObject);
             // }
-            FindObjectOfType<LevelManager>().LevelLost();
+            //FindObjectOfType<LevelManager>().LevelLost();
             //Destroy(gameObject);   
         }
     }
