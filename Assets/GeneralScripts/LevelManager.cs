@@ -12,6 +12,7 @@ public class LevelManager : MonoBehaviour
     public static bool viewingNumpad = false;
     public static bool level2Solved = false;
     public static int currentLevel = 0;
+    public static bool playerDead = false;
     public Image fadeToBlack;
 
     public int maxLevelCashAmt;
@@ -34,6 +35,7 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         isGameOver = false;
+        playerDead = false;
 
         //might have to edit how this bool is initialized when implementing more levels 
         clearConditionSatisfied = false;
@@ -68,6 +70,7 @@ public class LevelManager : MonoBehaviour
     public void LevelLost()
     {
         isGameOver = true;
+        playerDead = true;
 
         // Camera.main.GetComponent<AudioSource>().pitch = 1;
         // AudioSource.PlayClipAtPoint(gameOverSFX, Camera.main.transform.position);
@@ -102,7 +105,7 @@ public class LevelManager : MonoBehaviour
 
     }
 
-    void LoadCurrentLevel()
+    public void LoadCurrentLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }

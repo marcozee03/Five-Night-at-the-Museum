@@ -59,6 +59,9 @@ public class HUDManager : MonoBehaviour
         {
             staminaFill.color = Color.red;
         }
+        else if(DeathScreenBehavior.isInDeathScreen){
+            staminaFill.color = Color.clear;
+        }
         else
         {
             staminaFill.color = Color.green;
