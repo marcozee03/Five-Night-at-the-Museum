@@ -8,8 +8,6 @@ public class HUDManager : MonoBehaviour
 {
     //Total points player gathered 
     public static float points;
-    //TODO: Make stamina a bar rather than number 
-    //Actual changing stamina value for player
     public Text scoreText;
     public Slider staminaBar;
     public Image staminaFill;
@@ -21,7 +19,6 @@ public class HUDManager : MonoBehaviour
 
     public static bool isGameOver;
     PlayerController player;
-    // Update is called once per frame
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
@@ -65,5 +62,18 @@ public class HUDManager : MonoBehaviour
         }
     }
 
+    public static void LockAndHideCursor()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        //TODO: show Crosshair
+    }
+
+    public static void UnlockAndShowCursor()
+    {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        //TODO: hide crosshair
+    }
 
 }

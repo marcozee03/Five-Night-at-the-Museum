@@ -41,7 +41,7 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
                 UpdateBindingDisplay();
             }
         }
-
+        
         public InputBinding.DisplayStringOptions displayStringOptions
         {
             get => m_DisplayStringOptions;
@@ -143,6 +143,7 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
             {
                 if (m_RebindStopEvent == null)
                     m_RebindStopEvent = new InteractiveRebindEvent();
+                m_Action.action.Enable();
                 return m_RebindStopEvent;
             }
         }
@@ -238,7 +239,7 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
         {
             if (!ResolveActionAndBinding(out var action, out var bindingIndex))
                 return;
-
+            m_Action.action.Disable();
             // If the binding is a composite, we need to rebind each part in turn.
             if (action.bindings[bindingIndex].isComposite)
             {
@@ -419,7 +420,7 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
             UpdateActionLabel();
             UpdateBindingDisplay();
         }
-
+        
         #endif
 
         private void UpdateActionLabel()
