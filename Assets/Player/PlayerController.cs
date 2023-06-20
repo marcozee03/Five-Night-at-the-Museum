@@ -172,7 +172,6 @@ public class PlayerController : MonoBehaviour
             velocity.y = 0;
         }
         velocity.y -= gravity * Time.deltaTime;
-        Debug.Log(velocity.y);
 
         if (CanJump)
         {

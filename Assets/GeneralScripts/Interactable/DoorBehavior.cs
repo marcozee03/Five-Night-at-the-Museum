@@ -13,12 +13,7 @@ public override void Interact(PlayerController player)
             //play animation for door open 
             LevelManager.clearConditionSatisfied = false;
 
-        }
-        
-        
-      
-        
-        
+        }     
     }
     override public string HoverTextMnK()
     {

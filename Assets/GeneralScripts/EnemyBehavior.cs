@@ -162,9 +162,9 @@ public class EnemyBehavior : MonoBehaviour
         {
             myNavMeshAgent.speed = 0;
             gameObject.GetComponent<Animator>().SetInteger("animState", 3);
-            if(!LevelManager.isGameOver)FindObjectOfType<LevelManager>().LevelLost();
             //chaseSFX.Pause();
             currentState = FSMStates.Attack;
+            FindAnyObjectByType<LevelManager>().LevelLost();
         }
     }
 
@@ -176,7 +176,6 @@ public class EnemyBehavior : MonoBehaviour
         gameObject.GetComponent<Animator>().SetInteger("animState", 3);
         player.GetComponent<PlayerController>().DisableMovement();
         player.transform.SetParent(transform);
-        if (!LevelManager.isGameOver) FindObjectOfType<LevelManager>().LevelLost();
     }
 
     void Detected()
