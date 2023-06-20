@@ -19,7 +19,7 @@ public class FirstPersonCamera : MonoBehaviour
     }
     float moveX, moveY;
     // Update is called once per frame
-    private bool disabled;
+    private bool disabled = false;
     public void DisableCameraMovement()
     {
         disabled = true;
