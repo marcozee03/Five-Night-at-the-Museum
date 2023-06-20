@@ -9,7 +9,6 @@ public class LevelManager : MonoBehaviour
     public Text gameText;
     public static bool isGameOver = false;
     public static bool clearConditionSatisfied= false;
-    public static bool viewingNumpad = false;
     public static bool level2Solved = false;
     public static int currentLevel = 0;
     public Image fadeToBlack;
@@ -32,7 +31,6 @@ public class LevelManager : MonoBehaviour
 
         //might have to edit how this bool is initialized when implementing more levels 
         clearConditionSatisfied = false;
-        viewingNumpad = false;
         level2Solved = false;
         currentLevel++;
         

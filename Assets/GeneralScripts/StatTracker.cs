@@ -6,16 +6,14 @@ using UnityEngine.InputSystem.Utilities;
 using UnityEngine.Device;
 public class StatTracker : MonoBehaviour
 {
-
-
-    // Response to the first button press. Calls our delegate
-    // and then immediately stops listening.
-
+    private void Awake()
+    {
+        hud = GetComponentInChildren<HUDManager>();
+    }
+    InputAction actions;
     #region Switch Button Prompts
-    public static bool OnController = false;
+    public static bool OnController { get; private set; } = false;
     private System.IDisposable m_EventListener;
-
-    // When enabled, we install our button press listener.
     void OnEnable()
     {
         // Start listening.
@@ -28,18 +26,15 @@ public class StatTracker : MonoBehaviour
         m_EventListener.Dispose();
     }
     private void OnButtonPressed(InputControl control)
-    {
-        //Debug.Log(control.device.description.deviceClass);
-        //if(control.device.description.interfaceName)
+    { 
         string deviceClass = control.device.description.deviceClass;
         OnController = !(deviceClass.Equals("Keyboard") || deviceClass.Equals("Mouse"));
-        //Debug.Log(OnController ? "GamePad" : "keyboard") ;
     }
-    #endregion
-    private void Awake()
-    {
-        hud = GetComponentInChildren<HUDManager>();
 
-    }
+    #endregion
+
+    public static float MouseSens;
+    public static float ControllerSens;
+
     public static HUDManager hud;
 }

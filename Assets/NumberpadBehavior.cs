@@ -13,7 +13,7 @@ public class NumberpadBehavior : InteractableObject
     public GameObject failMessage;
     public string correctSequence = "01234";
     public InputField numpadInput;
-    private string inputSequence; 
+    private string inputSequence;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,62 +23,63 @@ public class NumberpadBehavior : InteractableObject
     // Update is called once per frame
     void Update()
     {
-        if(Vector3.Distance(player.transform.position, transform.position) > viewableDistance){
+        if (Vector3.Distance(player.transform.position, transform.position) > viewableDistance)
+        {
             numPad.SetActive(false);
-            LevelManager.viewingNumpad = false;
+            player.GetComponentInChildren<FirstPersonCamera>().EnableCameraMovement();
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
-            if(clearMessage.activeInHierarchy){
+            if (clearMessage.activeInHierarchy)
+            {
                 clearMessage.SetActive(false);
+            }
         }
-        }
-        
-        
-        
-        
     }
     public override void Interact(PlayerController player)
     {
-        
+
         numPad.SetActive(true);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-        LevelManager.viewingNumpad = true;
-
-        
-        
+        player.GetComponentInChildren<FirstPersonCamera>().DisableCameraMovement();
     }
     override public string HoverTextMnK()
     {
         return "[F] to enter code";
     }
 
-    public void AddToInput(string input){
+    public void AddToInput(string input)
+    {
         inputSequence += input;
         numpadInput.text = inputSequence;
-        
+
 
     }
-    public void ClearInput(){
+    public void ClearInput()
+    {
         inputSequence = "";
         numpadInput.text = inputSequence;
     }
 
-    public void SubmitCode(){
-        
-        if(inputSequence == correctSequence){
-            if(failMessage.activeInHierarchy){
+    public void SubmitCode()
+    {
+
+        if (inputSequence == correctSequence)
+        {
+            if (failMessage.activeInHierarchy)
+            {
                 failMessage.SetActive(false);
             }
             LevelManager.clearConditionSatisfied = true;
             clearMessage.SetActive(true);
-            
+
 
         }
-        else{
+        else
+        {
             failMessage.SetActive(true);
         }
     }
 
-    
+
 }
