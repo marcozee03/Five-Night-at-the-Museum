@@ -6,12 +6,17 @@ using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
-    public Text gameText;
+    public GameObject transitionPanel;
     public static bool isGameOver = false;
     public static bool clearConditionSatisfied= false;
     public static bool level2Solved = false;
     public static int currentLevel = 0;
+    public static bool playerDead = false;
     public Image fadeToBlack;
+
+    public int maxLevelCashAmt;
+    public Text cashText;
+    public Text pctCompleteText;
   
     public float fadeSpeed = 3.0f; // in seconds
 
@@ -23,11 +28,13 @@ public class LevelManager : MonoBehaviour
 
     private float countDown;
     private Color color = Color.black;
+    public GameObject deathScreen;
 
     // Start is called before the first frame update
     void Start()
     {
         isGameOver = false;
+        playerDead = false;
 
         //might have to edit how this bool is initialized when implementing more levels 
         clearConditionSatisfied = false;
@@ -43,11 +50,11 @@ public class LevelManager : MonoBehaviour
     void Update()
     {
         //fading to black inspired by https://forum.unity.com/threads/solved-how-can-i-change-a-value-smoothly-from-1-to-0-over-a-given-number-of-seconds.485260/
-        if(isGameOver == true){
+        if (isGameOver == true)
+        {
             fadeToBlack.gameObject.SetActive(true);
             fadeToBlack.color = color;
-            color.a = Mathf.MoveTowards(color.a, 1, (1/fadeSpeed) * Time.deltaTime);
-            
+            color.a = Mathf.MoveTowards(color.a, 1, (1 / fadeSpeed) * Time.deltaTime);
         }
 
     }
@@ -61,38 +68,30 @@ public class LevelManager : MonoBehaviour
     public void LevelLost()
     {
         isGameOver = true;
-        gameText.text = "GAME OVER!";
-        gameText.gameObject.SetActive(true);
+        playerDead = true;
 
         // Camera.main.GetComponent<AudioSource>().pitch = 1;
         // AudioSource.PlayClipAtPoint(gameOverSFX, Camera.main.transform.position);
-        Invoke("LoadCurrentLevel", 5);
 
+        //LoadCurrentLevel();
 
     }
     public void LevelBeat()
     {
 
         isGameOver = true;
-        if (gameText != null)
-        {
-            gameText.text = "YOU WIN!";
-        }
-
-
-        gameText.gameObject.SetActive(true);
-
-        
-
 
         //change pitch on last level 
 
         //AudioSource.PlayClipAtPoint(gameWonSFX, Camera.main.transform.position);
 
-
+        cashText.text = $"{HUDManager.points}";
+        int pct = Mathf.RoundToInt((HUDManager.points / maxLevelCashAmt) * 100);
+        pctCompleteText.text = $"{pct}%";
         
         if(!string.IsNullOrEmpty(nextLevel)){
-          Invoke("LoadLevel", 5);
+          Invoke("LoadLevel", 12);
+          Invoke("LevelTransitionScreen", 7);
         }
         
 
@@ -104,9 +103,14 @@ public class LevelManager : MonoBehaviour
 
     }
 
-    void LoadCurrentLevel()
+    public void LoadCurrentLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+
+    void LevelTransitionScreen()
+    {
+        transitionPanel.SetActive(true);
+    }
 }
