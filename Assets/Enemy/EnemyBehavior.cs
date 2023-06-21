@@ -82,7 +82,6 @@ public class EnemyBehavior : MonoBehaviour
         Debug.Log("started Attack State");
         myNavMeshAgent.speed = 0;
         anim.SetInteger("animState", 3);
-        player.transform.LookAt(Head);
         //chaseSFX.Pause();
         currentState = FSMStates.Attack;
         player.GetComponent<PlayerController>().DisableMovement();
@@ -129,6 +128,7 @@ public class EnemyBehavior : MonoBehaviour
     
     void UpdateAttackState()
     {
+        player.transform.LookAt(Head);
     }
 
     void StateTransitions()

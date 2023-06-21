@@ -6,7 +6,24 @@ using UnityEngine.UI;
 public class AMenu : MonoBehaviour
 {
     public AMenu lastMenu;
-
+    private void Start()
+    {
+        if (module == null)
+        {
+            module = GameObject.FindAnyObjectByType<InputSystemUIInputModule>();
+        }
+    }
+    private void OnValidate()
+    {
+        if(module == null)
+        {
+            module = GameObject.FindAnyObjectByType<InputSystemUIInputModule>();
+            if (module == null)
+            {
+                Debug.LogWarning("No input module attached");
+            }
+        }
+    }
     protected virtual void Back()
     {
         if (lastMenu != null)
@@ -15,7 +32,7 @@ public class AMenu : MonoBehaviour
         }
         Unload();
     }
-    public InputSystemUIInputModule module;
+    protected static InputSystemUIInputModule module;
     private void Update()
     {
 
@@ -32,12 +49,12 @@ public class AMenu : MonoBehaviour
         prev.Unload();
     }
     //is the load button used to load the previous menu so that back isn't cyclical. doesn't overwrite lastmenu;
-    public void LoadAsLast()
+    public virtual void LoadAsLast()
     {
         gameObject.SetActive(true);
 
     }
-    public void Unload()
+    public virtual void Unload()
     {
         gameObject.SetActive(false);
         lastMenu = null;

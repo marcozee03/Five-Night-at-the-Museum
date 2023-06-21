@@ -40,6 +40,7 @@ public class Flashlight : MonoBehaviour
                 spareBatteries--;
                 BatteryRemaining = Mathf.Min(100, BatteryRemaining + spareBatteryRecharge);
             }
+
         }
         UpdateBatteryUI();
     }

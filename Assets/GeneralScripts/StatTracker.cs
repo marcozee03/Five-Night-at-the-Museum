@@ -10,6 +10,7 @@ public class StatTracker : MonoBehaviour
     {
         MouseSens = PlayerPrefs.GetFloat("MouseSens");
         ControllerSens = PlayerPrefs.GetFloat("ControllerSens");
+        hud = GameObject.FindAnyObjectByType<HUDManager>();
     }
     private void Start()
     {

@@ -7,7 +7,6 @@ public class DeathScreenBehavior : MonoBehaviour
 
     public GameObject deathMenu;
     public static bool isInDeathScreen;
-    private Color color = Color.clear;
 
     // Start is called before the first frame update
     void Start()
