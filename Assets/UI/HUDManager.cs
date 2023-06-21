@@ -75,14 +75,14 @@ public class HUDManager : MonoBehaviour
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        //TODO: show Crosshair
+        StatTracker.hud.ShowCrosshair();
     }
 
     public static void UnlockAndShowCursor()
     {
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-        //TODO: hide crosshair
+        StatTracker.hud.HideCrosshair();
     }
     [ContextMenu("Hide HUD")]
     public void HideHUD()
@@ -99,5 +99,17 @@ public class HUDManager : MonoBehaviour
         {
             child.gameObject.SetActive(true);
         }
+    }
+
+    public void HideCrosshair()
+    {
+        if (Crosshair == null) return;
+        Crosshair.gameObject.SetActive(false);
+
+    }
+    public void ShowCrosshair()
+    {
+        if (Crosshair == null) return;
+        Crosshair.gameObject.SetActive(true);
     }
 }

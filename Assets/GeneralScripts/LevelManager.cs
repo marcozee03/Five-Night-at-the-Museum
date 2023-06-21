@@ -58,13 +58,6 @@ public class LevelManager : MonoBehaviour
         }
 
     }
-
-    
-
-
-
-
-
     public void LevelLost()
     {
         isGameOver = true;
@@ -72,9 +65,7 @@ public class LevelManager : MonoBehaviour
 
         // Camera.main.GetComponent<AudioSource>().pitch = 1;
         // AudioSource.PlayClipAtPoint(gameOverSFX, Camera.main.transform.position);
-
         //LoadCurrentLevel();
-
     }
     public void LevelBeat()
     {

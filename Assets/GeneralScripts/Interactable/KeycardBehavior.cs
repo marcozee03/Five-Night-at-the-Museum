@@ -7,11 +7,8 @@ public class KeycardBehavior : InteractableObject
 
 public override void Interact(PlayerController player)
     {
-        LevelManager.clearConditionSatisfied = true;
-        
+        LevelManager.clearConditionSatisfied = true; 
         Destroy(gameObject);
-        
-        
     }
     override public string HoverTextMnK()
     {

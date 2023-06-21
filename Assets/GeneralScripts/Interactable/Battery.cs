@@ -7,7 +7,6 @@ public class Battery : InteractableObject
     public override void Interact(PlayerController player)
     {
         player.gameObject.GetComponentInChildren<Flashlight>().spareBatteries += 1;
-        
         Destroy(gameObject);
     }
     public override string HoverTextMnK()
