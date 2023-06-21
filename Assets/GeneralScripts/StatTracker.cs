@@ -8,9 +8,12 @@ public class StatTracker : MonoBehaviour
 {
     private void Awake()
     {
-        hud = GetComponentInChildren<HUDManager>();
         MouseSens = PlayerPrefs.GetFloat("MouseSens");
         ControllerSens = PlayerPrefs.GetFloat("ControllerSens");
+    }
+    private void Start()
+    {
+       hud = GameObject.FindAnyObjectByType<HUDManager>();
     }
     InputAction actions;
     #region Switch Button Prompts

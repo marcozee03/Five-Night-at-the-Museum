@@ -10,6 +10,7 @@ TagManager:
   - NumpadInput
   - Random
   - Window
+  - HUD
   layers:
   - Default
   - TransparentFX

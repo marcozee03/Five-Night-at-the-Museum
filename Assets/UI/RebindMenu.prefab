@@ -10763,14 +10763,13 @@ GameObject:
   m_Component:
   - component: {fileID: 7932325178390868950}
   - component: {fileID: 7932325178390868944}
-  - component: {fileID: 7932325178390868951}
   m_Layer: 5
   m_Name: RebindMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &7932325178390868950
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10803,21 +10802,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 7932325178390868949}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46adf1fa8ae930c4f8cd3920d53a3e5a, type: 3}
+  m_Script: {fileID: 11500000, guid: 9d289cdd9b2aaaa41835ec58053af393, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lastMenu: {fileID: 0}
+  module: {fileID: 0}
+  actions: {fileID: -944628639613478452, guid: 5de578ff8c3f4614d931b11e83a9976d, type: 3}
   mouseSens: {fileID: 7932325178365463048}
   controllerSens: {fileID: 7932325177040041015}
---- !u!114 &7932325178390868951
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7932325178390868949}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b6c2da2db9374dada6761b5e35121c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actions: {fileID: -944628639613478452, guid: 5de578ff8c3f4614d931b11e83a9976d, type: 3}
+  Overlay: {fileID: 7932325177224663853}
+  RebindInProgress: 0

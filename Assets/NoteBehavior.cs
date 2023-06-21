@@ -10,6 +10,10 @@ public class NoteBehavior : InteractableObject
     public GameObject note;
     public GameObject player;
     public float viewableDistance = 2.0f;
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
     void Update(){
 
         if(Vector3.Distance(player.transform.position, transform.position) > viewableDistance){

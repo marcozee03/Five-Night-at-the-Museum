@@ -14,6 +14,7 @@ public class HUDManager : MonoBehaviour
     public Text hoverText;
     public Slider flashlight;
     public Text Batteries;
+    public Image Crosshair;
 
     public static int distractions;
 
@@ -32,25 +33,30 @@ public class HUDManager : MonoBehaviour
     }
     public void SetBatteryAmount(float batteryRemaining, int spareBatteries)
     {
+        if (Batteries == null) return;
         Batteries.text = batteryRemaining.ToString("000") + "%\n" + spareBatteries;
     }
 
     public void SetFlashlightBar(float batteryRemaining)
     {
+        if (flashlight == null) return;
         flashlight.value = batteryRemaining;
     }
 
     void SetScoreText()
     {
+        if (scoreText == null) return;
         scoreText.text = points.ToString("f0");
     }
     public void SetHoverText(string txt)
     {
+        Debug.Log("tried to set hover");
+        if (hoverText == null) return;
         hoverText.text = txt;
     }
     void SetStaminaBar()
     {
-
+        if (staminaBar == null) return;
         staminaBar.value = player.CurrentStamina;
         if (player.Exhausted)
         {
@@ -78,5 +84,20 @@ public class HUDManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         //TODO: hide crosshair
     }
-
+    [ContextMenu("Hide HUD")]
+    public void HideHUD()
+    {
+        foreach(Transform child in transform)
+        {
+            child.gameObject.SetActive(false);
+        }
+    }
+    [ContextMenu("Show HUD")]
+    public void ShowHUD()
+    {
+        foreach (Transform child in transform)
+        {
+            child.gameObject.SetActive(true);
+        }
+    }
 }
