@@ -1118,7 +1118,7 @@ MonoBehaviour:
   Head: {fileID: 8088639617634101779}
   enemyFOV: 114.03
   eyes: {fileID: 2424824918119509648}
-  viewDistance: 5.1
+  viewDistance: 9.59
   HeatTime: 3
 --- !u!195 &2424824916667997824
 NavMeshAgent:

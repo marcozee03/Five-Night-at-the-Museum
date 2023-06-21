@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1013487063
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1013487064}
+  m_Layer: 0
+  m_Name: Eyes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1013487064
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013487063}
+  m_LocalRotation: {x: 1.1828815e-20, y: 0.00000006180144, z: 0.000000052147254, w: 1}
+  m_LocalPosition: {x: 0.0027444314, y: 0.014655709, z: 0.11118906}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7955795666681325142}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &49311636722961635
 GameObject:
   m_ObjectHideFlags: 0
@@ -1239,8 +1270,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  moveSpeed: 2
-  detectionRange: 5
+  attackRange: 2
+  currentState: 0
+  anim: {fileID: 0}
+  randomSpots: []
+  PatrolSpeed: 3
+  ChaseSpeed: 9
+  Head: {fileID: 7955795666681325142}
+  enemyFOV: 0
+  eyes: {fileID: 1013487064}
+  viewDistance: 0
+  HeatTime: 3
 --- !u!195 &4579740308163105477
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1931,6 +1971,7 @@ Transform:
   - {fileID: 5130133408046572216}
   - {fileID: 4537270123063979035}
   - {fileID: 1356063832793511575}
+  - {fileID: 1013487064}
   m_Father: {fileID: 7341698882479410988}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
