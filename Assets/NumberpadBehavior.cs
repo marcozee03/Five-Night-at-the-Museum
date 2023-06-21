@@ -7,7 +7,7 @@ public class NumberpadBehavior : InteractableObject
 {
     public GameObject numPad;
     public float viewableDistance = 2.0f;
-    public GameObject player;
+    private GameObject player;
     //public Text numpadInput;
     public GameObject clearMessage;
     public GameObject failMessage;
@@ -23,25 +23,31 @@ public class NumberpadBehavior : InteractableObject
     // Update is called once per frame
     void Update()
     {
-        if (Vector3.Distance(player.transform.position, transform.position) > viewableDistance)
+        if (ShouldStopShowing)
         {
-            numPad.SetActive(false);
-            player.GetComponentInChildren<FirstPersonCamera>().EnableCameraMovement();
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
-            if (clearMessage.activeInHierarchy)
-            {
-                clearMessage.SetActive(false);
-            }
+            ExitNumPad();
         }
     }
+
+    private void ExitNumPad()
+    {
+        numPad.SetActive(false);
+        player.GetComponentInChildren<FirstPersonCamera>().EnableCameraMovement();
+        HUDManager.LockAndHideCursor();
+        if (clearMessage.activeInHierarchy)
+        {
+            clearMessage.SetActive(false);
+        }
+        player = null;
+    }
+    private bool ShouldStopShowing => player != null && Vector3.Distance(player.transform.position, transform.position) > viewableDistance && player !=null;
     public override void Interact(PlayerController player)
     {
 
         numPad.SetActive(true);
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
+        HUDManager.UnlockAndShowCursor();
         player.GetComponentInChildren<FirstPersonCamera>().DisableCameraMovement();
+        this.player = player.gameObject;
     }
     override public string HoverTextMnK()
     {

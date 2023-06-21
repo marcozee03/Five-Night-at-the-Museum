@@ -8,26 +8,22 @@ public class NoteBehavior : InteractableObject
 {
     
     public GameObject note;
-    public GameObject player;
+    private GameObject player;
     public float viewableDistance = 2.0f;
-    private void Start()
-    {
-        player = GameObject.FindGameObjectWithTag("Player");
-    }
     void Update(){
 
-        if(Vector3.Distance(player.transform.position, transform.position) > viewableDistance){
+        if(playerViewing && Vector3.Distance(player.transform.position, transform.position) > viewableDistance){
             note.SetActive(false);
+            player = null;
         }
 
     }
-   
+
+    private bool playerViewing => player != null;
     public override void Interact(PlayerController player)
     {
         note.SetActive(true);
-
-       
-        
+        this.player = player.gameObject;
     }
     override public string HoverTextMnK()
     {

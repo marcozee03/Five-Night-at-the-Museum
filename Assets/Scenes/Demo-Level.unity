@@ -123,16 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: a86a1a2cb8794554b9d172c14954627c, type: 2}
---- !u!1 &4302218 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7932325178390868949, guid: c26416f15d6a2c64285a493d49950c24, type: 3}
-  m_PrefabInstance: {fileID: 261668180}
-  m_PrefabAsset: {fileID: 0}
---- !u!224 &4302219 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 7932325178390868950, guid: c26416f15d6a2c64285a493d49950c24, type: 3}
-  m_PrefabInstance: {fileID: 261668180}
-  m_PrefabAsset: {fileID: 0}
 --- !u!43 &28356998
 Mesh:
   m_ObjectHideFlags: 0
@@ -2498,6 +2488,18 @@ PrefabInstance:
       propertyPath: module
       value: 
       objectReference: {fileID: 1168542315}
+    - target: {fileID: 4992902185836143027, guid: c26416f15d6a2c64285a493d49950c24, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4992902185836143027, guid: c26416f15d6a2c64285a493d49950c24, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446552370307833271, guid: c26416f15d6a2c64285a493d49950c24, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7932325178390868949, guid: c26416f15d6a2c64285a493d49950c24, type: 3}
       propertyPath: m_Name
       value: RebindMenu
@@ -16015,6 +16017,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8400ec78fc39344aa18803fd392e38a, type: 3}
+--- !u!224 &1052009633 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4992902185836143027, guid: c26416f15d6a2c64285a493d49950c24, type: 3}
+  m_PrefabInstance: {fileID: 261668180}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1076238594 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4960522281234489477, guid: 7b97976492ee1794f87e88366b12c54c, type: 3}
@@ -27627,8 +27634,8 @@ RectTransform:
   - {fileID: 1968827616}
   - {fileID: 411986420}
   - {fileID: 924451292}
+  - {fileID: 1052009633}
   - {fileID: 1639312276}
-  - {fileID: 4302219}
   m_Father: {fileID: 1993036910}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -27649,7 +27656,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d11164f896d98e94ba2768ba9efa9c9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menu: {fileID: 4302218}
+  menu: {fileID: 0}
 --- !u!43 &1363390444
 Mesh:
   m_ObjectHideFlags: 0
@@ -29361,7 +29368,7 @@ RectTransform:
   - {fileID: 50157518}
   - {fileID: 814261772}
   m_Father: {fileID: 1359099143}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
