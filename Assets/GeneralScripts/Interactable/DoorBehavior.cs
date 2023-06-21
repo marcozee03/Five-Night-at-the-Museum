@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class DoorBehavior : InteractableObject
 {
-
+    public string LockedMessage;
+    public string UnlockedMessage = "proceed to next level";
 public override void Interact(PlayerController player)
     {
         if(LevelManager.clearConditionSatisfied){
@@ -17,17 +18,18 @@ public override void Interact(PlayerController player)
     }
     override public string HoverTextMnK()
     {
-        if(LevelManager.clearConditionSatisfied){
+        if (LevelManager.clearConditionSatisfied)
+        {
             return "[F] to proceed to next level";
-        }  
-        else if(LevelManager.currentLevel == 1){
-            return "Need Keycard to open";
-        } 
-        else if(LevelManager.currentLevel == 2){
-            return "Enter passcode to open";
         }
-        else{
-            return "default string";
+        else return LockedMessage;
+    }
+    public override string HoverTextController()
+    {
+        if (LevelManager.clearConditionSatisfied)
+        {
+            return "(Y)" + UnlockedMessage;
         }
+        else return LockedMessage;
     }
 }

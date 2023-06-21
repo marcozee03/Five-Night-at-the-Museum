@@ -16,7 +16,9 @@ public class StatTracker : MonoBehaviour
     {
        hud = GameObject.FindAnyObjectByType<HUDManager>();
     }
+
     InputAction actions;
+
     #region Switch Button Prompts
     public static bool OnController { get; private set; } = false;
     private System.IDisposable m_EventListener;
@@ -26,6 +28,8 @@ public class StatTracker : MonoBehaviour
         m_EventListener =
             InputSystem.onAnyButtonPress
                 .Call(OnButtonPressed);
+
+
     }
     private void OnDisable()
     {
@@ -41,6 +45,5 @@ public class StatTracker : MonoBehaviour
 
     public static float MouseSens = 1;
     public static float ControllerSens = 1;
-
     public static HUDManager hud;
 }

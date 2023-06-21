@@ -63,7 +63,7 @@ public class EnemyBehavior : MonoBehaviour
         }
     }
     #region Start States
-
+    //Functions Called upon switching to respective state
     [Header("Speed Stats")]
     public float PatrolSpeed = 3;
     public float ChaseSpeed = 9;
@@ -79,6 +79,7 @@ public class EnemyBehavior : MonoBehaviour
     }
     void StartAttackState()
     {
+        transform.LookAt(player);
         Debug.Log("started Attack State");
         myNavMeshAgent.speed = 0;
         anim.SetInteger("animState", 3);
@@ -87,7 +88,6 @@ public class EnemyBehavior : MonoBehaviour
         player.GetComponent<PlayerController>().DisableMovement();
         StatTracker.hud.HideHUD();
         player.GetComponentInChildren<FirstPersonCamera>().DisableCameraMovement();
-        player.transform.SetParent(transform);
         FindAnyObjectByType<LevelManager>().LevelLost();
     }
     #endregion
@@ -129,8 +129,9 @@ public class EnemyBehavior : MonoBehaviour
     void UpdateAttackState()
     {
         player.transform.LookAt(Head);
+        transform.LookAt(player);
     }
-
+    //Handles the cases when states should switch when state switches Start X state is called
     void StateTransitions()
     {
         FSMStates target;
@@ -197,6 +198,7 @@ public class EnemyBehavior : MonoBehaviour
     #endregion
 
     #region heat
+    [Header("heat")]
     public float HeatTime = 3;
     private float currentHeat;
     void CalculateHeat()

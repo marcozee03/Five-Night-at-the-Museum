@@ -18,12 +18,6 @@ public class TVTriggerBehavior : MonoBehaviour
         this.hasTriggered = false;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (!this.hasTriggered)

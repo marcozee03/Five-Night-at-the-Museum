@@ -14,4 +14,8 @@ public override void Interact(PlayerController player)
     {
         return "[F] to Collect Keycard";
     }
+    public override string HoverTextController()
+    {
+        return "(Y) to Collect Keycard";
+    }
 }

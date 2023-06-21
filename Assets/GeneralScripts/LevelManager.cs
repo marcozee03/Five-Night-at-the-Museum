@@ -24,13 +24,8 @@ public class LevelManager : MonoBehaviour
     //public AudioClip gameWonSFX;
 
     public string nextLevel;
-
-
-    private float countDown;
     private Color color = Color.black;
     public GameObject deathScreen;
-
-    // Start is called before the first frame update
     void Start()
     {
         isGameOver = false;
@@ -45,8 +40,6 @@ public class LevelManager : MonoBehaviour
         
 
     }
-
-    // Update is called once per frame
     void Update()
     {
         //fading to black inspired by https://forum.unity.com/threads/solved-how-can-i-change-a-value-smoothly-from-1-to-0-over-a-given-number-of-seconds.485260/

@@ -9,6 +9,16 @@ public class RebindMenu : AMenu
     public TMP_InputField mouseSens;
     public TMP_InputField controllerSens;
     public GameObject Overlay;
+    private bool overriden = false;
+    private void Start()
+    {
+        if (!overriden)
+        {
+            gameObject.SetActive(false);
+            overriden = true;
+        }
+    }
+
     public void OnEnable()
     {
         var rebinds = PlayerPrefs.GetString("rebinds");
@@ -26,7 +36,7 @@ public class RebindMenu : AMenu
         StatTracker.MouseSens = PlayerPrefs.GetFloat("MouseSens", 1);
         StatTracker.ControllerSens = PlayerPrefs.GetFloat("ControllerSens");
     }
-    public bool RebindInProgress = false;
+    private bool RebindInProgress = false;
     private void Update()
     {       
         if (!RebindInProgress && module.input.GetButtonDown("Cancel"))

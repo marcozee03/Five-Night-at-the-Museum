@@ -9726,12 +9726,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lastMenu: {fileID: 0}
-  module: {fileID: 0}
   actions: {fileID: -944628639613478452, guid: 5de578ff8c3f4614d931b11e83a9976d, type: 3}
   mouseSens: {fileID: 5511725615847883359}
   controllerSens: {fileID: 5511725615160458336}
   Overlay: {fileID: 5511725614975523706}
-  RebindInProgress: 0
 --- !u!1 &8664361739134249457
 GameObject:
   m_ObjectHideFlags: 0

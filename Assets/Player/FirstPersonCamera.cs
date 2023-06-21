@@ -5,10 +5,7 @@ using UnityEngine.InputSystem;
 public class FirstPersonCamera : MonoBehaviour
 {
     Transform playerBody;
-
-    //starting look "height"
     private float pitch = 0;
-    // Start is called before the first frame update
     private void Awake()
     {
         playerBody = transform.parent.transform;

@@ -5,6 +5,7 @@ using UnityEngine.InputSystem.UI;
 using UnityEngine.UI;
 public class AMenu : MonoBehaviour
 {
+    protected static InputSystemUIInputModule module;
     public AMenu lastMenu;
     private void Start()
     {
@@ -24,15 +25,7 @@ public class AMenu : MonoBehaviour
             }
         }
     }
-    protected virtual void Back()
-    {
-        if (lastMenu != null)
-        {
-            lastMenu.LoadAsLast();
-        }
-        Unload();
-    }
-    protected static InputSystemUIInputModule module;
+
     private void Update()
     {
 
@@ -41,8 +34,10 @@ public class AMenu : MonoBehaviour
             Back();
         }
     }
+    #region MenuLoading
+
     //Loads this menu given the previous menu so when escape is pressed previous menu is loaded
-    public void LoadAsNext(AMenu prev)
+    public virtual void LoadAsNext(AMenu prev)
     {
         gameObject.SetActive(true);
         lastMenu = prev;
@@ -59,4 +54,14 @@ public class AMenu : MonoBehaviour
         gameObject.SetActive(false);
         lastMenu = null;
     }
+    //loads to the last Menu
+    protected virtual void Back()
+    {
+        if (lastMenu != null)
+        {
+            lastMenu.LoadAsLast();
+        }
+        Unload();
+    }
+    #endregion
 }
