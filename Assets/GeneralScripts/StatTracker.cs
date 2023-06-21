@@ -35,8 +35,8 @@ public class StatTracker : MonoBehaviour
 
     #endregion
 
-    public static float MouseSens;
-    public static float ControllerSens;
+    public static float MouseSens = 1;
+    public static float ControllerSens = 1;
 
     public static HUDManager hud;
 }
