@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.03170765, g: 0.026718164, b: 0.020935057, a: 1}
+  m_IndirectSpecularColor: {r: 0.031646747, g: 0.026672414, b: 0.02090457, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5127,10 +5127,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dbccedf54c4eed43bca28ed1e6cb4c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  moveSpeed: 2
-  detectionRange: 5
+  player: {fileID: 1077837628}
+  attackRange: 2
   currentState: 0
+  randomSpots: []
+  PatrolSpeed: 3
+  ChaseSpeed: 9
+  enemyFOV: 2.32
+  eyes: {fileID: 1426927892}
+  viewDistance: 11.07
 --- !u!136 &579420418
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5167,6 +5172,11 @@ NavMeshAgent:
   m_BaseOffset: 0.47
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!4 &579420422 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9682321bb22764b69a081b81c28f3ab7, type: 3}
+  m_PrefabInstance: {fileID: 579420415}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &585965522
 Mesh:
   m_ObjectHideFlags: 0
@@ -16044,6 +16054,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb7ba546a91797e479a7ce2bb3e456ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1077837628 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3801012780616107108, guid: c6ff52a71689e97468926759ac7ae933, type: 3}
+  m_PrefabInstance: {fileID: 1140563180}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1095559248
 Mesh:
   m_ObjectHideFlags: 0
@@ -28349,6 +28364,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4335995329347816, guid: be05f035c9997da4bb6eabfbef319f74, type: 3}
   m_PrefabInstance: {fileID: 1727276146}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1426927891
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1426927892}
+  m_Layer: 0
+  m_Name: Eyes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1426927892
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1426927891}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.881, z: 0.054}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 579420422}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1436878883
 GameObject:
   m_ObjectHideFlags: 0

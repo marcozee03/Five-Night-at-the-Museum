@@ -665,13 +665,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathMenu: {fileID: 7949816462868553890}
-  UIImages:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  UIText: {fileID: 0}
 --- !u!1 &7949816462644717205
 GameObject:
   m_ObjectHideFlags: 0
@@ -834,7 +827,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7949816461402646375}
   m_Father: {fileID: 7949816462587156520}
@@ -842,8 +835,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 48.040035}
+  m_SizeDelta: {x: 0, y: 96.07993}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7949816462868553901
 CanvasRenderer:

@@ -21,13 +21,14 @@ public class DeathScreenBehavior : MonoBehaviour
         if (LevelManager.isGameOver && LevelManager.playerDead && !isInDeathScreen)
         {
             print("Reached death screen.");
-            DeathMenu();
+            Invoke("DeathMenu",2);
+            isInDeathScreen = true;
         }
     }
 
     void DeathMenu()
     {
-        isInDeathScreen = true;
+        
         Time.timeScale = 0f;
         StatTracker.hud.HideHUD();
         this.deathMenu.SetActive(true);

@@ -6,17 +6,12 @@ using UnityEngine.AI;
 public class EnemyBehavior : MonoBehaviour
 {
     public Transform player;
-    public float moveSpeed = 2;
+    public float attackRange = 2;
     AudioSource chaseSFX;
     AudioSource deadSFX;
-    Rigidbody rb;
-    bool playerInView = false;
-    public float detectionRange = 5;
-    bool isMoving;
     NavMeshAgent myNavMeshAgent;
     public FSMStates currentState;
-    bool play = true;
-
+    public Animator anim;
     public enum FSMStates
     {
         Idle,
@@ -25,186 +20,246 @@ public class EnemyBehavior : MonoBehaviour
         Attack,
         Dead
     }
-
+    public GameObject[] randomSpots;
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        isMoving = false;
         if (player == null)
         {
             player = GameObject.FindGameObjectWithTag("Player").transform;
         }
+        anim = GetComponent<Animator>();
         myNavMeshAgent = GetComponent<NavMeshAgent>();
-        currentState = FSMStates.Patrol;
+        currentState = FSMStates.Idle;
         //chaseSFX = GetComponent<AudioSource>();
         deadSFX = gameObject.transform.GetChild(1).GetComponent<AudioSource>();
         //moveRandom();
+         randomSpots = GameObject.FindGameObjectsWithTag("Random");
     }
-
-    // Update is called once per frame
     void Update()
     {
-        switch(currentState)
+        switch (currentState)
         {
             case FSMStates.Patrol:
                 UpdatePatrolState();
                 break;
-            case FSMStates.Chase:
-                UpdateChaseState();
-                break;
             case FSMStates.Attack:
                 UpdateAttackState();
                 break;
-            case FSMStates.Dead:
-                //UpdateDeadState();
-                break;
         }
-        if(!LevelManager.isGameOver)
+        if (!LevelManager.isGameOver)
         {
-            Detected();
-            if (playerInView)
-            {
-                currentState = FSMStates.Chase;
-            }
-           /* else if (LevelManager.distracted)
-            {
-               myNavMeshAgent.SetDestination(LevelManager.distractLoc);
-               //Debug.Log("distracted: " + transform.position + " going to " + LevelManager.distractLoc);
-               isMoving = true;
-               float distance = Vector3.Distance(transform.position, LevelManager.distractLoc);
-               if (distance < 2)
-               {
-                   isMoving = false;
-                   LevelManager.distracted = false;
-                   //Debug.Log("continue patrol");
-                   //moveRandom();
-                   currentState = FSMStates.Patrol;
-               }
-            }*/
-            else
-            {
-                //implement random behavior for patrolling
-                //moveRandom();
-                currentState = FSMStates.Patrol;
-            }
-        }
-        else
-        {
-            //GameObject.FindObjectOfType
-            currentState = FSMStates.Attack;
+            StateTransitions();
         }
     }
+    private void LateUpdate()
+    {
+        switch (currentState)
+        {
+            //in late update so that head will turn and not be overwritten by animation
+            case FSMStates.Chase:
+                UpdateChaseState();
+                break;
+        }
+    }
+    #region Start States
 
+    [Header("Speed Stats")]
+    public float PatrolSpeed = 3;
+    public float ChaseSpeed = 9;
+    void StartPatrolState()
+    {
+        anim.SetInteger("animState", 2);
+        myNavMeshAgent.speed = PatrolSpeed;
+    }
+    void StartChaseState()
+    {
+        anim.SetInteger("animState", 1);
+        myNavMeshAgent.speed = ChaseSpeed;
+    }
+    void StartAttackState()
+    {
+        Debug.Log("started Attack State");
+        myNavMeshAgent.speed = 0;
+        anim.SetInteger("animState", 3);
+        player.transform.LookAt(Head);
+        //chaseSFX.Pause();
+        currentState = FSMStates.Attack;
+        player.GetComponent<PlayerController>().DisableMovement();
+        StatTracker.hud.HideHUD();
+        player.GetComponentInChildren<FirstPersonCamera>().DisableCameraMovement();
+        player.transform.SetParent(transform);
+        FindAnyObjectByType<LevelManager>().LevelLost();
+    }
+    #endregion
+
+    #region StateBehaviors
     int index = 0;
     void UpdatePatrolState()
     {
         print("Patrolling!");
         //if(play)
         //{
-           // chaseSFX.Pause();
+        // chaseSFX.Pause();
         //     play = false;
         // }
-        gameObject.GetComponent<Animator>().SetInteger("animState", 2);
-        GameObject[] randomSpots = GameObject.FindGameObjectsWithTag("Random");
-        if (!isMoving)
-        {
-            GameObject thisSpot = randomSpots[index];
-            if (transform.position.x != thisSpot.transform.position.x || transform.position.z != thisSpot.transform.position.z)
-            {
-                // transform.position = Vector3.MoveTowards
-                //     (transform.position, thisSpot.transform.position, moveSpeed * Time.deltaTime);
-                myNavMeshAgent.SetDestination(thisSpot.transform.position);
 
+        GameObject[] randomSpots = GameObject.FindGameObjectsWithTag("Random");
+            GameObject thisSpot = randomSpots[index];
+            if (!SameApproximateHorizontalLocation(thisSpot.transform.position, transform.position))
+            {
+                myNavMeshAgent.SetDestination(thisSpot.transform.position);
             }
             else
             {
-                index++;
+                IncrementRandomSpotsIndex();
             }
-            if (index == randomSpots.Length)
-            {
-                index = 0;
-            }
-        }
+        
     }
-
+    public Transform Head;
     void UpdateChaseState()
     {
         print("Chasing!");
-        float distance = Vector3.Distance(transform.position, player.position);
-        transform.LookAt(player);
-        //transform.position = Vector3.MoveTowards
-        //    (transform.position, player.position, moveSpeed * Time.deltaTime);
+        Head.LookAt(player);
         myNavMeshAgent.SetDestination(player.position);
-        isMoving = true;
-        //moveSpeed *= 3;
-        myNavMeshAgent.speed = 7;
-        gameObject.GetComponent<Animator>().SetInteger("animState", 1);
+        CalculateHeat();
+        
         //chaseSFX.PlayOneShot(chaseSFX.clip, 0.5f);
-        if (PlayerBehavior.hiding)
-        {
-            isMoving = false;
-            playerInView = false;
-            //Debug.Log("continue patrol");
-            //moveRandom();
-            //chaseSFX.Pause();
-            currentState = FSMStates.Patrol;
-        }
-        else if(distance > detectionRange)
-        {
-            playerInView = false;
-            myNavMeshAgent.speed = 3;
-            //moveRandom();
-            //chaseSFX.Pause();
-            currentState = FSMStates.Patrol;
-        }
-        if(distance <= 2)
-        {
-            myNavMeshAgent.speed = 0;
-            gameObject.GetComponent<Animator>().SetInteger("animState", 3);
-            //chaseSFX.Pause();
-            currentState = FSMStates.Attack;
-            FindAnyObjectByType<LevelManager>().LevelLost();
-        }
     }
-
+    
     void UpdateAttackState()
     {
-        print("Attack!");
-        myNavMeshAgent.speed = 0;
-        //deadSFX.Play();
-        gameObject.GetComponent<Animator>().SetInteger("animState", 3);
-        player.GetComponent<PlayerController>().DisableMovement();
-        player.transform.SetParent(transform);
     }
 
-    void Detected()
+    void StateTransitions()
     {
-        float distance = Vector3.Distance(transform.position, player.position);
-        if (distance < detectionRange)
+        FSMStates target;
+
+        if (DetectPlayer() || currentHeat > 0)
         {
-            Vector3 playerDirection = transform.position - player.position;
-            float angle = Vector3.Angle(transform.forward, playerDirection);
-            if (Mathf.Abs(angle) > 90 && Mathf.Abs(angle) < 270)
+            target = FSMStates.Chase;
+            if (TargetInAttackRange())
             {
-                playerInView = true;
+                target = FSMStates.Attack;
             }
-            RaycastHit hit;
-            playerInView = true;
-            if (Physics.Raycast(transform.position, transform.forward, out hit, detectionRange))
+        }
+        else
+        {
+            target = FSMStates.Patrol;
+        }
+
+        if (!target.Equals(currentState))
+        {
+            currentState = target;
+            switch (currentState)
             {
-                if (hit.collider.gameObject.CompareTag("Player"))
+                case FSMStates.Patrol:
+                    StartPatrolState();
+                    break;
+                case FSMStates.Chase:
+                    StartChaseState();
+                    break;
+                case FSMStates.Attack:
+                    StartAttackState();
+                    break;
+                case FSMStates.Dead:
+                    //UpdateDeadState();
+                    break;
+            }
+        }
+    }
+    #endregion
+    
+    #region Vision
+    [Header("Enemy Vision")]
+    public float enemyFOV;
+    public Transform eyes;
+    [Min(0)] public float viewDistance;
+    private bool TargetInAttackRange()
+    {
+        return Vector3.Distance(transform.position, player.transform.position) < attackRange;
+    }
+    private bool DetectPlayer()
+    {
+        Vector3 directionToTarget = player.transform.position - eyes.transform.position;
+        if (Vector3.Angle(directionToTarget, eyes.transform.forward) <= enemyFOV / 2)
+        {
+            if (Physics.Raycast(eyes.transform.position, directionToTarget, out RaycastHit hit, viewDistance))
+            {
+                if (hit.collider.CompareTag("Player"))
                 {
-                    playerInView = true;
+                    return true;
                 }
             }
         }
+        return false;
     }
+    #endregion
 
-    
+    #region heat
+    public float HeatTime = 3;
+    private float currentHeat;
+    void CalculateHeat()
+    {
+        if (DetectPlayer())
+        {
+            currentHeat = HeatTime;
+        }else if(HeatTime > 0)
+        {
+            currentHeat -= Time.deltaTime;
+        }
+    }
+    #endregion
+
+    #region extra Utility Functions
+    private bool SameApproximateHorizontalLocation(Vector3 vector, Vector3 other)
+    {
+        return Mathf.Approximately(vector.x, other.x) && Mathf.Approximately(vector.z, other.z);
+    }
+    private void IncrementRandomSpotsIndex()
+    {
+        index++;
+        index %= randomSpots.Length;
+    }
+    private Vector3 RotateYaw(Vector3 original, float rotation)
+    {
+        float x, z;
+        x = original.x * Mathf.Cos(Mathf.Deg2Rad * rotation) - original.z * Mathf.Sin(Mathf.Deg2Rad * rotation);
+        z = original.x * Mathf.Sin(Mathf.Deg2Rad * rotation) + original.z * Mathf.Cos(Mathf.Deg2Rad * rotation);
+
+        return new Vector3(x, original.y, z);
+    }
+    #endregion
+
+    #region Editor
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawLine(eyes.position, RotateYaw((eyes.transform.forward * viewDistance), enemyFOV / 2) + eyes.transform.position);
+        Gizmos.DrawLine(eyes.position, RotateYaw((eyes.transform.forward * viewDistance), -enemyFOV / 2) + eyes.transform.position);
+        Gizmos.DrawLine(eyes.position, (eyes.transform.forward * viewDistance) + eyes.transform.position);
+    }
+    #endregion
+
+    #region old Code
+    /* else if (LevelManager.distracted)
+ {
+    myNavMeshAgent.SetDestination(LevelManager.distractLoc);
+    //Debug.Log("distracted: " + transform.position + " going to " + LevelManager.distractLoc);
+    isMoving = true;
+    float distance = Vector3.Distance(transform.position, LevelManager.distractLoc);
+    if (distance < 2)
+    {
+        isMoving = false;
+        LevelManager.distracted = false;
+        //Debug.Log("continue patrol");
+        //moveRandom();
+        currentState = FSMStates.Patrol;
+    }
+ }*/
     // void moveRandom()
     // {
-        
+
     // }
 
     // bool IsPlayerInClearFOV()
@@ -226,4 +281,5 @@ public class EnemyBehavior : MonoBehaviour
     //     }
     //     return false;
     // }
+    #endregion
 }
