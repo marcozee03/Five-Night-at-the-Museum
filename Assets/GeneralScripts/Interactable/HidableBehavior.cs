@@ -21,6 +21,7 @@ public class HidableBehavior : InteractableObject
             player.gameObject.transform.position = transform.position + new Vector3(0, -0.2f, -1f);
             player.transform.rotation = this.transform.rotation;
             hiding = true;
+            player.OverrideInteraction(this);
         }
         else
         {

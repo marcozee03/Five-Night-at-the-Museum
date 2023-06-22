@@ -292,10 +292,10 @@ public class PlayerController : MonoBehaviour
     public InteractableObject interactOverride;
     public void Interact(InputAction.CallbackContext context)
     {
+        //Debug.Log("context given" + context.started);
+        if (!context.started) return;
         if (interactOverride == null)
         {
-            //Debug.Log("context given" + context.started);
-            if (!context.started) return;
             string debugString = "Interact Pressed";
             if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out RaycastHit hitInfo, maxObjectDistance))
             {
