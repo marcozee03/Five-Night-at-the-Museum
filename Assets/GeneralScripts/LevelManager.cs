@@ -16,6 +16,7 @@ public class LevelManager : MonoBehaviour
     public static bool distracted = false;
     public static int distractions;
     public static Vector3 distractLoc;
+    public static bool playerDead;
   
     public float fadeSpeed = 3.0f; // in seconds
 
