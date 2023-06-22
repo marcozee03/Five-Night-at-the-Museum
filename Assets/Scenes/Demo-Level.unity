@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.031646747, g: 0.026672414, b: 0.02090457, a: 1}
+  m_IndirectSpecularColor: {r: 0.03170765, g: 0.026718164, b: 0.020935057, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2453,7 +2453,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4992902185836143027, guid: c26416f15d6a2c64285a493d49950c24, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.000030517578
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5037726745592116810, guid: c26416f15d6a2c64285a493d49950c24, type: 3}
       propertyPath: m_Text
@@ -2851,6 +2851,10 @@ PrefabInstance:
     - target: {fileID: 7604265716599844183, guid: bc708a5dd3cec4801953c2c5a8368af3, type: 3}
       propertyPath: m_Name
       value: Bench_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7604265716599844183, guid: bc708a5dd3cec4801953c2c5a8368af3, type: 3}
+      propertyPath: m_TagString
+      value: Interactable
       objectReference: {fileID: 0}
     - target: {fileID: 8054313335541839896, guid: bc708a5dd3cec4801953c2c5a8368af3, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -36359,6 +36363,38 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &2057901516 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7604265716599844183, guid: bc708a5dd3cec4801953c2c5a8368af3, type: 3}
+  m_PrefabInstance: {fileID: 326867075}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &2057901519
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2057901516}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.5002003, y: 1.2501, z: 1.25}
+  m_Center: {x: 2.250104, y: 0.62505156, z: -0.375}
+--- !u!114 &2057901520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2057901516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ea09037de5fabe469cc00b90f9502ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tpOffset: {x: 0, y: 0, z: 0}
+  exitOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &2062513574
 GameObject:
   m_ObjectHideFlags: 0
