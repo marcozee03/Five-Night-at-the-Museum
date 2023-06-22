@@ -1195,11 +1195,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!1 &250757499 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6446552370307833271, guid: c26416f15d6a2c64285a493d49950c24, type: 3}
-  m_PrefabInstance: {fileID: 212405422}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &250757500 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4992902185836143027, guid: c26416f15d6a2c64285a493d49950c24, type: 3}
@@ -1210,7 +1205,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4268535277262070592, guid: c26416f15d6a2c64285a493d49950c24, type: 3}
   m_PrefabInstance: {fileID: 212405422}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 250757499}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9d289cdd9b2aaaa41835ec58053af393, type: 3}
@@ -2795,7 +2790,6 @@ GameObject:
   - component: {fileID: 583042489}
   - component: {fileID: 583042488}
   - component: {fileID: 583042487}
-  - component: {fileID: 583042491}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -2901,21 +2895,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &583042491
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 583042486}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d11164f896d98e94ba2768ba9efa9c9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lastMenu: {fileID: 0}
-  menu: {fileID: 250757499}
-  settings: {fileID: 0}
 --- !u!1001 &584235094
 PrefabInstance:
   m_ObjectHideFlags: 0
