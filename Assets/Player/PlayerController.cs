@@ -54,6 +54,8 @@ public class PlayerController : MonoBehaviour
         {
             Debug.LogWarning("Please attach a CapsuleCollider component to object called \"" + gameObject.name + "\"");
         }
+        InputAction a;
+        
     }
     private void Awake()
     {
@@ -282,23 +284,40 @@ public class PlayerController : MonoBehaviour
         {
             StatTracker.hud.SetHoverText("");
         }
+        if(interactOverride != null)
+        {
+            StatTracker.hud.SetHoverText(interactOverride.HoverText());
+        }
     }
+    public InteractableObject interactOverride;
     public void Interact(InputAction.CallbackContext context)
     {
-        //Debug.Log("context given" + context.started);
-        if (!context.started) return;
-        string debugString = "Interact Pressed";
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out RaycastHit hitInfo, maxObjectDistance))
+        if (interactOverride == null)
         {
-            debugString += " Ray collided";
-            InteractableObject obj = hitInfo.collider.gameObject.GetComponent<InteractableObject>();
-            if (obj != null)
+            //Debug.Log("context given" + context.started);
+            if (!context.started) return;
+            string debugString = "Interact Pressed";
+            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out RaycastHit hitInfo, maxObjectDistance))
             {
-                debugString += " found interactableObject";
-                obj.Interact(GetComponent<PlayerController>());
+                debugString += " Ray collided";
+                InteractableObject obj = hitInfo.collider.gameObject.GetComponent<InteractableObject>();
+                if (obj != null)
+                {
+                    debugString += " found interactableObject";
+                    obj.Interact(GetComponent<PlayerController>());
+                }
             }
+            Debug.Log(debugString);
         }
-        Debug.Log(debugString);
+        else
+        {
+            interactOverride.Interact(this);
+            interactOverride = null;
+        }
+    }
+    public void OverrideInteraction(InteractableObject obj)
+    {
+        interactOverride = obj;
     }
     #endregion
 
