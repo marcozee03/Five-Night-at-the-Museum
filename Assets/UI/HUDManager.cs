@@ -62,7 +62,8 @@ public class HUDManager : MonoBehaviour
         {
             staminaFill.color = Color.red;
         }
-        else if(DeathScreenBehavior.isInDeathScreen){
+        else if (DeathScreenBehavior.isInDeathScreen)
+        {
             staminaFill.color = Color.clear;
         }
         else
@@ -87,7 +88,7 @@ public class HUDManager : MonoBehaviour
     [ContextMenu("Hide HUD")]
     public void HideHUD()
     {
-        foreach(Transform child in transform)
+        foreach (Transform child in transform)
         {
             child.gameObject.SetActive(false);
         }
