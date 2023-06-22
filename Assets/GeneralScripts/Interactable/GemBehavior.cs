@@ -19,9 +19,4 @@ public class GemBehavior : InteractableObject
     {
         return "[F] to Collect [$" + Value + "]";
     }
-    public override string HoverTextController()
-    {
-        return "(Y) to Collect [$" + Value + "]";
-    }
-
 }

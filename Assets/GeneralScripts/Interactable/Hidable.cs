@@ -37,10 +37,6 @@ public class Hidable : InteractableObject
 
     public override string HoverTextController()
     {
-        if (!playerInside)
-        {
-            return "(Y) to Hide";
-        }
-        else return "(Y) to Exit";
+        return "(Y) to hide";
     }
 }

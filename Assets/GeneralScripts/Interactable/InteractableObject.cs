@@ -12,7 +12,7 @@ public abstract class InteractableObject : MonoBehaviour, IInteractble
 
     virtual public string HoverTextMnK()
     {
-        return "press [F] to interact";
+        return "press[F] to interact";
     }
     virtual public string HoverText()
     {

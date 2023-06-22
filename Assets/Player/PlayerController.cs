@@ -41,26 +41,24 @@ public class PlayerController : MonoBehaviour
     #region Internal
     private bool sprinting = false;
     private bool LockPlayer;
-    public CapsuleCollider col;
-    public CharacterController controller;
-    float LateralSpeed => Mathf.Sqrt(Mathf.Pow(controller.velocity.x, 2) + Mathf.Pow(controller.velocity.z, 2)); // the current speed combining the X and Z components
+    private CapsuleCollider col;
     private void OnValidate()
     {
-        if (controller == null)
+        if(controller == null)
         {
-            Debug.LogWarning("Please attach a Character Controller component to object called \"" + gameObject.name + "\"");
+           controller = gameObject.GetComponent<CharacterController>();
+            if(controller == null)
+            {
+                Debug.LogWarning("Please attach a Character Controller component to object called \"" + gameObject.name + "\"");
+            }
         }
-        if (col == null)
+        if(col == null)
         {
-            Debug.LogWarning("Please attach a CapsuleCollider component to object called \"" + gameObject.name + "\"");
+            col = GetComponent<CapsuleCollider>();
         }
     }
-    private void Awake()
-    {
-        controller = gameObject.GetComponent<CharacterController>();
-        col = GetComponent<CapsuleCollider>();
-    }
-
+    float LateralSpeed => Mathf.Sqrt(Mathf.Pow(controller.velocity.x, 2) + Mathf.Pow(controller.velocity.z, 2)); // the current speed combining the X and Z components
+    private CharacterController controller;
     private void Start()
     {
         CurrentStamina = maxStamina;
@@ -72,10 +70,11 @@ public class PlayerController : MonoBehaviour
             HandleHorizontal();
             HandleVertical();
             HandleSnappingToGround();
+            HandleStamina();
             controller.Move(velocity * Time.deltaTime);
         }
-        HandleStamina();
         HoverInteractableObject();
+        Distract();
     }
     #endregion
 
@@ -91,12 +90,14 @@ public class PlayerController : MonoBehaviour
     }
 
     #region Unity InputSystem Events
-    private float HorizontalInput => input.x;
-    private float VerticalInput => input.y;
+    private float horizontalInput;
+    private float verticalInput;
     private Vector2 input;
     public void LogMoveInput(InputAction.CallbackContext context)
     {
         input = context.ReadValue<Vector2>();
+        horizontalInput = input.x;
+        verticalInput = input.y;
     }
 
     bool jumpPressed = false;
@@ -129,16 +130,13 @@ public class PlayerController : MonoBehaviour
     private void HandleHorizontal()
     {
         float AHI, AVI; //Adjusted Vertical/Horizontal Input
-        //Rotates the Input Vector to be aligned witha camera
         float rotation = -transform.eulerAngles.y;
-        AHI = HorizontalInput * Mathf.Cos(Mathf.Deg2Rad * rotation) - VerticalInput * Mathf.Sin(Mathf.Deg2Rad * rotation);
-        AVI = HorizontalInput * Mathf.Sin(Mathf.Deg2Rad * rotation) + VerticalInput * Mathf.Cos(Mathf.Deg2Rad * rotation);
-
-        float x, z;
+        AHI = horizontalInput * Mathf.Cos(Mathf.Deg2Rad * rotation) - verticalInput * Mathf.Sin(Mathf.Deg2Rad * rotation);
+        AVI = horizontalInput * Mathf.Sin(Mathf.Deg2Rad * rotation) + verticalInput * Mathf.Cos(Mathf.Deg2Rad * rotation);
+        float x = 0, z = 0;
         float targetSpeed = CanSprint ? sprintSpeed : walkSpeed;
         if (!GroundCheck())
         {
-            //Aerial
             if (input.magnitude > .01)
             {
                 x = Mathf.MoveTowards(velocity.x, targetSpeed * AHI, airAcceleration * Time.deltaTime);
@@ -152,15 +150,14 @@ public class PlayerController : MonoBehaviour
         }
         else if (input.magnitude > .01)
         {
-            //Ground Movement
-            Vector3 forward = transform.forward * Mathf.MoveTowards(LateralSpeed, targetSpeed * VerticalInput, acceleration);
-            Vector3 side = transform.right * Mathf.MoveTowards(LateralSpeed, targetSpeed * HorizontalInput, acceleration);
+            Vector3 forward = transform.forward * Mathf.MoveTowards(LateralSpeed, targetSpeed * verticalInput, acceleration);
+            Vector3 side = transform.right * Mathf.MoveTowards(LateralSpeed, targetSpeed * horizontalInput, acceleration);
+            //Vector3 side = transform.right * (LateralSpeed, targetSpeed * horizontalInput, acceleration);
             x = forward.x + side.x;
             z = forward.z + side.z;
         }
         else
         {
-            //Decelerate
             Vector3 forward = transform.forward * Mathf.MoveTowards(LateralSpeed, 0, deceleration);
             Vector3 side = transform.right * Mathf.MoveTowards(LateralSpeed, 0, deceleration);
             x = forward.x + side.x;
@@ -175,7 +172,8 @@ public class PlayerController : MonoBehaviour
             velocity.y = 0;
         }
         velocity.y -= gravity * Time.deltaTime;
-
+        Debug.Log(velocity.y);
+        
         if (CanJump)
         {
             timeJumpWasPressed = Mathf.NegativeInfinity; //prevents a double jump input if you manage to land on
@@ -183,6 +181,7 @@ public class PlayerController : MonoBehaviour
             velocity.y = Mathf.Sqrt(2 * jumpHeight * gravity);
             tempDisableSnapping = true;
         }
+
     }
     #endregion
 
@@ -203,7 +202,7 @@ public class PlayerController : MonoBehaviour
     }
     private void SnapToGround()
     {
-        if (Physics.Raycast(new Ray(transform.position - new Vector3(0, col.height / 2), transform.up * -1), out RaycastHit hit, SnapDistance))
+        if (Physics.Raycast(new Ray(transform.position - new Vector3(0, col.height/2), transform.up * -1), out RaycastHit hit, SnapDistance))
         {
             controller.Move(new Vector3(0, -hit.distance, 0));
         }
@@ -211,7 +210,7 @@ public class PlayerController : MonoBehaviour
         {
             tempDisableSnapping = true;
         }
-
+            
     }
     private bool GroundCheck()
     {
@@ -231,7 +230,7 @@ public class PlayerController : MonoBehaviour
     private float TimeExhaustedStamina = float.MinValue;
     private void HandleStamina()
     {
-        if (CanSprint && (new Vector2(HorizontalInput, VerticalInput).magnitude >= walkSpeed / sprintSpeed))
+        if (CanSprint && (new Vector2(horizontalInput, verticalInput).magnitude >= walkSpeed / sprintSpeed))
         {
             ReduceStamina(staminaLossRate * Time.deltaTime);
         }
@@ -300,13 +299,34 @@ public class PlayerController : MonoBehaviour
         }
         Debug.Log(debugString);
     }
+    void Distract()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 5) 
+            && hit.collider.CompareTag("Window"))
+        {
+            StatTracker.hud.SetHoverText("Q to break");
+            if(Input.GetKey(KeyCode.Q))
+            {
+                LevelManager.distracted = true;
+                LevelManager.distractLoc = hit.point;
+                //Debug.Log("PRESS Q " + hit.point);
+            }
+        }
+        else
+        {
+            //LevelManager.distracted = false;
+        }
+    }
     #endregion
+
+
 
     #region Gizmos
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(transform.position - (transform.up * GroundDistance), controller.radius);
-        Gizmos.DrawLine(transform.position - new Vector3(0, col.height / 2), transform.position - new Vector3(0, col.height + SnapDistance));
+        Gizmos.DrawLine(transform.position - new Vector3(0, col.height/2),transform.position - new Vector3(0, col.height + SnapDistance));
     }
     #endregion
 }
