@@ -6,40 +6,44 @@ using UnityEngine.InputSystem.Utilities;
 using UnityEngine.Device;
 public class StatTracker : MonoBehaviour
 {
+    private void Awake()
+    {
+        MouseSens = PlayerPrefs.GetFloat("MouseSens");
+        ControllerSens = PlayerPrefs.GetFloat("ControllerSens");
+        hud = GameObject.FindAnyObjectByType<HUDManager>();
+    }
+    private void Start()
+    {
+       hud = GameObject.FindAnyObjectByType<HUDManager>();
+    }
 
-
-    // Response to the first button press. Calls our delegate
-    // and then immediately stops listening.
+    InputAction actions;
 
     #region Switch Button Prompts
-    public static bool OnController = false;
+    public static bool OnController { get; private set; } = false;
     private System.IDisposable m_EventListener;
-
-    // When enabled, we install our button press listener.
     void OnEnable()
     {
         // Start listening.
         m_EventListener =
             InputSystem.onAnyButtonPress
                 .Call(OnButtonPressed);
+
+
     }
     private void OnDisable()
     {
         m_EventListener.Dispose();
     }
     private void OnButtonPressed(InputControl control)
-    {
-        Debug.Log(control.device.description.deviceClass);
-        //if(control.device.description.interfaceName)
+    { 
         string deviceClass = control.device.description.deviceClass;
         OnController = !(deviceClass.Equals("Keyboard") || deviceClass.Equals("Mouse"));
-        //Debug.Log(OnController ? "GamePad" : "keyboard") ;
     }
-    #endregion
-    private void Awake()
-    {
-        hud = GetComponentInChildren<HUDManager>();
 
-    }
+    #endregion
+
+    public static float MouseSens = 1;
+    public static float ControllerSens = 1;
     public static HUDManager hud;
 }

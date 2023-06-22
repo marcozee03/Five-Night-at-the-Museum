@@ -20,9 +20,9 @@ public class WindowBreak : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Invoke("Break", 1);
+        //Invoke("Break", 1);
     }
-
+    /*
     void Break()
     {
         Debug.Log("pos " + transform.position + " dl "  + LevelManager.distractLoc);
@@ -50,7 +50,7 @@ public class WindowBreak : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
+    */
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.CompareTag("Projectile"))
