@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class DeathScreenBehavior : MonoBehaviour
 {
 
@@ -44,5 +45,9 @@ public class DeathScreenBehavior : MonoBehaviour
         
         
         FindAnyObjectByType<LevelManager>().LoadCurrentLevel();
+    }
+    public void MainMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 }

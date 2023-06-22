@@ -20,7 +20,7 @@ public class WindowBreak : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Invoke("Break", 1);
+        //Invoke("Break", 1);
     }
     /*
     void Break()

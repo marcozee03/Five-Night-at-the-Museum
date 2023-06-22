@@ -34,7 +34,7 @@ public class RebindMenu : AMenu
         PlayerPrefs.SetString("rebinds", rebinds);
         PlayerPrefs.SetFloat("MouseSens", float.Parse(mouseSens.text));
         StatTracker.MouseSens = PlayerPrefs.GetFloat("MouseSens", 1);
-        StatTracker.ControllerSens = PlayerPrefs.GetFloat("ControllerSens");
+        StatTracker.ControllerSens = PlayerPrefs.GetFloat("ControllerSens", 1);
     }
     private bool RebindInProgress = false;
     private void Update()

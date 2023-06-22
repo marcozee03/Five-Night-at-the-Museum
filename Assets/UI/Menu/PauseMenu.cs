@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class PauseMenu : AMenu
 {
     public GameObject menu;
@@ -57,6 +57,7 @@ public class PauseMenu : AMenu
     }
     public void Exit()
     {
+        PlayerPrefs.SetInt("CurrentLevel", SceneManager.GetActiveScene().buildIndex);
         Application.Quit();
     }
 }
