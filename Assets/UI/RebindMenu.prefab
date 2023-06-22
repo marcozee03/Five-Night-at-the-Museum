@@ -4996,7 +4996,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: F
+  m_Text: LMB
 --- !u!1 &5069683608956241044
 GameObject:
   m_ObjectHideFlags: 0
@@ -5316,7 +5316,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: E
+  m_Text: RMB
 --- !u!1 &5069683609222561703
 GameObject:
   m_ObjectHideFlags: 0

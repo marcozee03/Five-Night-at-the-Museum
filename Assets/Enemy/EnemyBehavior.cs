@@ -8,7 +8,7 @@ public class EnemyBehavior : MonoBehaviour
     public Transform player;
     public float attackRange = 2;
     AudioSource chaseSFX;
-    AudioSource deadSFX;
+    public AudioSource deadSFX;
     NavMeshAgent myNavMeshAgent;
     public FSMStates currentState;
     public Animator anim;
@@ -79,6 +79,7 @@ public class EnemyBehavior : MonoBehaviour
     }
     void StartAttackState()
     {
+        //
         transform.LookAt(player);
         Debug.Log("started Attack State");
         myNavMeshAgent.speed = 0;
@@ -89,6 +90,7 @@ public class EnemyBehavior : MonoBehaviour
         StatTracker.hud.HideHUD();
         player.GetComponentInChildren<FirstPersonCamera>().DisableCameraMovement();
         FindAnyObjectByType<LevelManager>().LevelLost();
+        deadSFX.Play();
     }
     #endregion
 
@@ -129,7 +131,7 @@ public class EnemyBehavior : MonoBehaviour
     void UpdateAttackState()
     {
         player.transform.LookAt(Head);
-        transform.LookAt(player);
+        //transform.LookAt(player);
     }
     //Handles the cases when states should switch when state switches Start X state is called
     void StateTransitions()
