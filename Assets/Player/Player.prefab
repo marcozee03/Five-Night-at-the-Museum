@@ -44,8 +44,8 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
-  m_Range: 20.18
+  m_Intensity: 2
+  m_Range: 116.98
   m_SpotAngle: 56.9
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -192,7 +192,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0be5f606df09af247a74e07deed62ca6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Sensitivity: 0.025
 --- !u!1 &3801012780616107117
 GameObject:
   m_ObjectHideFlags: 0
@@ -434,6 +433,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 39f87b1d-56b3-4a08-8018-647945b29c50
     m_ActionName: base/Flashlight[/Keyboard/e,/XInputControllerWindows/rightTrigger]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2021289343}
+        m_TargetAssemblyTypeName: Flashlight, Assembly-CSharp
+        m_MethodName: Reload
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 6b68b843-f22c-47ca-b4a1-40785babd9d2
+    m_ActionName: base/Reload[/Keyboard/r,/XInputControllerWindows1/buttonSouth,/XInputControllerWindows/buttonSouth]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: base
@@ -461,6 +476,8 @@ MonoBehaviour:
   JumpBuffer: 0.5
   gravity: 24.28
   RecoveryCooldown: 3
+  col: {fileID: 3801012780616107105}
+  controller: {fileID: 3801012780616107104}
   GroundDistance: 0.58
   EnableSnapping: 1
   SnapDistance: 0.5
@@ -468,7 +485,7 @@ MonoBehaviour:
   staminaRecoveryRate: 20
   staminaLossRate: 10
   maxObjectDistance: 5
-  interactionOverride: {fileID: 0}
+  interactOverride: {fileID: 0}
 --- !u!1001 &8507685064414122915
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -562,4 +579,4 @@ MonoBehaviour:
   beam: {fileID: 411447611}
   batteryDrainRate: 5
   spareBatteryRecharge: 50
-  spareBatteries: 0
+  spareBatteries: 7

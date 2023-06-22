@@ -608,17 +608,6 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 4960522281234489482, guid: 7b97976492ee1794f87e88366b12c54c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7b97976492ee1794f87e88366b12c54c, type: 3}
---- !u!114 &50157519 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7901671998326306074, guid: cc1875b5b0fb1be42a61daa705ca82e5, type: 3}
-  m_PrefabInstance: {fileID: 7901671998279819989}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &72100520
 GameObject:
   m_ObjectHideFlags: 0
@@ -2919,11 +2908,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad84f23490c2e8e4a989bb03f735454b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitionPanel: {fileID: 1639312275}
+  transitionPanel: {fileID: 7901671998279819992}
   fadeToBlack: {fileID: 411986421}
-  maxLevelCashAmt: 1800
-  cashText: {fileID: 1277814224}
-  pctCompleteText: {fileID: 50157519}
+  maxLevelCashAmt: 2702
+  cashText: {fileID: 7901671998279819991}
+  pctCompleteText: {fileID: 7901671998279819990}
   fadeSpeed: 5
   nextLevel: Level2
   deathScreen: {fileID: 7949816462369446389}
@@ -19947,10 +19936,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 411447611, guid: c6ff52a71689e97468926759ac7ae933, type: 3}
-      propertyPath: m_Range
-      value: 80
-      objectReference: {fileID: 0}
     - target: {fileID: 3801012780616107108, guid: c6ff52a71689e97468926759ac7ae933, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -20724,17 +20709,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!114 &1277814224 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7901671997006366469, guid: cc1875b5b0fb1be42a61daa705ca82e5, type: 3}
-  m_PrefabInstance: {fileID: 7901671998279819989}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!43 &1285994125
 Mesh:
   m_ObjectHideFlags: 0
@@ -29129,11 +29103,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1617945639}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1639312275 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7901671997735389510, guid: cc1875b5b0fb1be42a61daa705ca82e5, type: 3}
-  m_PrefabInstance: {fileID: 7901671998279819989}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1639312276 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7901671997735389505, guid: cc1875b5b0fb1be42a61daa705ca82e5, type: 3}
@@ -38884,6 +38853,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc1875b5b0fb1be42a61daa705ca82e5, type: 3}
+--- !u!114 &7901671998279819990 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7901671998326306074, guid: cc1875b5b0fb1be42a61daa705ca82e5, type: 3}
+  m_PrefabInstance: {fileID: 7901671998279819989}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7901671998279819991 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7901671997006366469, guid: cc1875b5b0fb1be42a61daa705ca82e5, type: 3}
+  m_PrefabInstance: {fileID: 7901671998279819989}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &7901671998279819992 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7901671997735389510, guid: cc1875b5b0fb1be42a61daa705ca82e5, type: 3}
+  m_PrefabInstance: {fileID: 7901671998279819989}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7949816462369446388
 PrefabInstance:
   m_ObjectHideFlags: 0

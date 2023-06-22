@@ -43,8 +43,8 @@ public class EnemyBehavior : MonoBehaviour
             case FSMStates.Patrol:
                 UpdatePatrolState();
                 break;
-            case FSMStates.Attack:
-                UpdateAttackState();
+            case FSMStates.Chase:
+                UpdateChaseState();
                 break;
         }
         if (!LevelManager.isGameOver)
@@ -63,7 +63,7 @@ public class EnemyBehavior : MonoBehaviour
         }
     }
     #region Start States
-
+    //Functions Called upon switching to respective state
     [Header("Speed Stats")]
     public float PatrolSpeed = 3;
     public float ChaseSpeed = 9;
@@ -79,16 +79,15 @@ public class EnemyBehavior : MonoBehaviour
     }
     void StartAttackState()
     {
+        transform.LookAt(player);
         Debug.Log("started Attack State");
         myNavMeshAgent.speed = 0;
         anim.SetInteger("animState", 3);
-        player.transform.LookAt(Head);
         //chaseSFX.Pause();
         currentState = FSMStates.Attack;
         player.GetComponent<PlayerController>().DisableMovement();
         StatTracker.hud.HideHUD();
         player.GetComponentInChildren<FirstPersonCamera>().DisableCameraMovement();
-        player.transform.SetParent(transform);
         FindAnyObjectByType<LevelManager>().LevelLost();
     }
     #endregion
@@ -122,20 +121,20 @@ public class EnemyBehavior : MonoBehaviour
         print("Chasing!");
         Head.LookAt(player);
         myNavMeshAgent.SetDestination(player.position);
-        CalculateHeat();
-        
+        //moveSpeed *= 3;
+        myNavMeshAgent.speed = 7;
+        gameObject.GetComponent<Animator>().SetInteger("animState", 1);
         //chaseSFX.PlayOneShot(chaseSFX.clip, 0.5f);
-    }
-    
-    void UpdateAttackState()
-    {
+
+
     }
 
-    void StateTransitions()
+    private void StateTransitions()
     {
+        
+
         FSMStates target;
-
-        if (DetectPlayer() || currentHeat > 0)
+        if (DetectPlayer())
         {
             target = FSMStates.Chase;
             if (TargetInAttackRange())
@@ -197,6 +196,7 @@ public class EnemyBehavior : MonoBehaviour
     #endregion
 
     #region heat
+    [Header("heat")]
     public float HeatTime = 3;
     private float currentHeat;
     void CalculateHeat()

@@ -5,20 +5,14 @@ using UnityEngine.InputSystem;
 public class FirstPersonCamera : MonoBehaviour
 {
     Transform playerBody;
-    public float Sensitivity = 1;
-
-    //starting look "height"
     private float pitch = 0;
-    // Start is called before the first frame update
     private void Awake()
     {
         playerBody = transform.parent.transform;
     }
     void Start()
     {
-        //hiding and locking cursor 
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        HUDManager.LockAndHideCursor();
     }
     float moveX, moveY;
     // Update is called once per frame
@@ -27,6 +21,7 @@ public class FirstPersonCamera : MonoBehaviour
     {
         disabled = true;
     }
+
     public void EnableCameraMovement()
     {
         disabled = false;
@@ -38,12 +33,14 @@ public class FirstPersonCamera : MonoBehaviour
             pitch -= moveY;
             pitch = Mathf.Clamp(pitch, -90f, 90f);
             transform.localRotation = Quaternion.Euler(pitch, 0, 0);
-        
     }
 
     public void CameraMove(InputAction.CallbackContext context)
     {
+
+        bool mouseSens = context.control.device.description.deviceClass.Equals("Mouse");
         Vector2 input = context.ReadValue<Vector2>();
+        float Sensitivity = mouseSens ?  StatTracker.MouseSens : StatTracker.ControllerSens;
         moveX = input.x * Sensitivity;
         moveY = input.y * Sensitivity;
     }

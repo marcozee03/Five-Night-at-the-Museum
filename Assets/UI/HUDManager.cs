@@ -19,10 +19,13 @@ public class HUDManager : MonoBehaviour
     public static int distractions;
 
     public static bool isGameOver;
-    PlayerController player;
+    public PlayerController player;
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        if (player == null)
+        {
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        }
         staminaBar.maxValue = player.maxStamina;
         flashlight.maxValue = 100;
     }
@@ -62,8 +65,7 @@ public class HUDManager : MonoBehaviour
         {
             staminaFill.color = Color.red;
         }
-        else if (DeathScreenBehavior.isInDeathScreen)
-        {
+        else if(DeathScreenBehavior.isInDeathScreen){
             staminaFill.color = Color.clear;
         }
         else
@@ -88,7 +90,7 @@ public class HUDManager : MonoBehaviour
     [ContextMenu("Hide HUD")]
     public void HideHUD()
     {
-        foreach (Transform child in transform)
+        foreach(Transform child in transform)
         {
             child.gameObject.SetActive(false);
         }

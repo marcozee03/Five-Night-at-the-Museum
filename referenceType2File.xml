@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfTypeDate xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <TypeDate>
+    <guid>7d57a603264b07f4b879ad2045ad47b9</guid>
+    <fileName>Assets/Initialize.cs</fileName>
+    <timeStamp>2023-06-11T05:58:50-04:00</timeStamp>
+    <typeFullName>
+      <string>Initialize</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>1dbccedf54c4eed43bca28ed1e6cb4c2</guid>
+    <fileName>Assets/Enemy/EnemyBehavior.cs</fileName>
+    <timeStamp>2023-06-22T04:21:37.3127523-04:00</timeStamp>
+    <typeFullName>
+      <string>EnemyBehavior</string>
+      <string>EnemyBehavior+FSMStates</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>991b032022a6e485d93343f760edd892</guid>
+    <fileName>Assets/GeneralScripts/DeathScreenBehavior.cs</fileName>
+    <timeStamp>2023-06-22T04:21:37.3142792-04:00</timeStamp>
+    <typeFullName>
+      <string>DeathScreenBehavior</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>146b2d7dcf041b4429c5305cf6618995</guid>
+    <fileName>Assets/GeneralScripts/DestroyObject.cs</fileName>
+    <timeStamp>2023-06-22T00:16:24.1807022-04:00</timeStamp>
+    <typeFullName>
+      <string>DestroyObject</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>ff7cc7315deeb4394aa1af97686a4da9</guid>
+    <fileName>Assets/GeneralScripts/Jumpscare.cs</fileName>
+    <timeStamp>2023-06-21T21:18:29.6695499-04:00</timeStamp>
+    <typeFullName>
+      <string>Jumpscare</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>ad84f23490c2e8e4a989bb03f735454b</guid>
+    <fileName>Assets/GeneralScripts/LevelManager.cs</fileName>
+    <timeStamp>2023-06-22T04:21:37.3147791-04:00</timeStamp>
+    <typeFullName>
+      <string>LevelManager</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>57072aa376e0a90419625f7226181bab</guid>
+    <fileName>Assets/GeneralScripts/NoteBehavior.cs</fileName>
+    <timeStamp>2023-06-22T00:20:22.5031743-04:00</timeStamp>
+    <typeFullName>
+      <string>NoteBehavior</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>a4778b0c85bc2984788d315e191799cf</guid>
+    <fileName>Assets/GeneralScripts/NumberpadBehavior.cs</fileName>
+    <timeStamp>2023-06-22T00:20:22.5036752-04:00</timeStamp>
+    <typeFullName>
+      <string>NumberpadBehavior</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>f40ec9cc4e546d44682bb21eea2ef5e3</guid>
+    <fileName>Assets/GeneralScripts/StatTracker.cs</fileName>
+    <timeStamp>2023-06-22T00:16:24.183338-04:00</timeStamp>
+    <typeFullName>
+      <string>StatTracker</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>f622524c9f1364bdd9c77513a6a90f37</guid>
+    <fileName>Assets/GeneralScripts/TVTriggerBehavior.cs</fileName>
+    <timeStamp>2023-06-21T17:04:50.1899779-04:00</timeStamp>
+    <typeFullName>
+      <string>TVTriggerBehavior</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>e1379534c916a44808e5ab5ccce5271c</guid>
+    <fileName>Assets/GeneralScripts/WindowBreak.cs</fileName>
+    <timeStamp>2023-06-22T00:48:50.6418907-04:00</timeStamp>
+    <typeFullName>
+      <string>WindowBreak</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>0be5f606df09af247a74e07deed62ca6</guid>
+    <fileName>Assets/Player/FirstPersonCamera.cs</fileName>
+    <timeStamp>2023-06-22T04:21:37.3377243-04:00</timeStamp>
+    <typeFullName>
+      <string>FirstPersonCamera</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>35494e316c686ea49827d0fd8b808065</guid>
+    <fileName>Assets/Player/Flashlight.cs</fileName>
+    <timeStamp>2023-06-21T15:22:15.0624086-04:00</timeStamp>
+    <typeFullName>
+      <string>Flashlight</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>47a93db4cdf1a61499ee3e5e526ad49e</guid>
+    <fileName>Assets/Player/PlayerActions.cs</fileName>
+    <timeStamp>2023-06-11T05:58:50-04:00</timeStamp>
+    <typeFullName />
+  </TypeDate>
+  <TypeDate>
+    <guid>16414c37aef28b2458ea3f5f2cb432a9</guid>
+    <fileName>Assets/Player/PlayerController.cs</fileName>
+    <timeStamp>2023-06-22T04:21:37.3392117-04:00</timeStamp>
+    <typeFullName>
+      <string>PlayerController</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>7f7f22fd0abf5c5459b53931fbc41ba5</guid>
+    <fileName>Assets/UI/HUDManager.cs</fileName>
+    <timeStamp>2023-06-22T04:21:37.3953306-04:00</timeStamp>
+    <typeFullName>
+      <string>HUDManager</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>842f43ac94b4b4f72ac0898650ddcc44</guid>
+    <fileName>Assets/Cleaner/Editor/AssetCollector.cs</fileName>
+    <timeStamp>2015-12-09T13:51:26-05:00</timeStamp>
+    <typeFullName>
+      <string>AssetClean.AssetCollector</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp-Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>805140a4856714e288ea84985d3023df</guid>
+    <fileName>Assets/Cleaner/Editor/AssetReferenceCollection.cs</fileName>
+    <timeStamp>2015-12-09T13:51:26-05:00</timeStamp>
+    <typeFullName>
+      <string>AssetReferenceCollection</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp-Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>202c278a17939b24c8b79c0ee1f94d8f</guid>
+    <fileName>Assets/Cleaner/Editor/ClassReferenceCollection.cs</fileName>
+    <timeStamp>2023-06-22T04:47:13.4897841-04:00</timeStamp>
+    <typeFullName>
+      <string>AssetClean.ClassReferenceCollection</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp-Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>0d05386265df34bac8d0b6df44aa494c</guid>
+    <fileName>Assets/Cleaner/Editor/CollectionData.cs</fileName>
+    <timeStamp>2015-12-09T13:51:26-05:00</timeStamp>
+    <typeFullName>
+      <string>CollectionData</string>
+      <string>TypeDate</string>
+      <string>IReferenceCollection</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp-Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>74eec3bfba0594259ac2843353c082a3</guid>
+    <fileName>Assets/Cleaner/Editor/FindUnusedAssetsWindow.cs</fileName>
+    <timeStamp>2015-12-09T13:51:26-05:00</timeStamp>
+    <typeFullName>
+      <string>AssetClean.FindUnusedAssetsWindow</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp-Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>2c4f01a79a77a45a9a84004cc2b78098</guid>
+    <fileName>Assets/Cleaner/Editor/ShaderReferenceCollection.cs</fileName>
+    <timeStamp>2015-12-09T13:51:26-05:00</timeStamp>
+    <typeFullName>
+      <string>AssetClean.ShaderReferenceCollection</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp-Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>bb7ba546a91797e479a7ce2bb3e456ee</guid>
+    <fileName>Assets/GeneralScripts/Interactable/Battery.cs</fileName>
+    <timeStamp>2023-06-21T09:51:00.5156886-04:00</timeStamp>
+    <typeFullName>
+      <string>Battery</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>1e5369811682369409e70b4799ef8cd8</guid>
+    <fileName>Assets/GeneralScripts/Interactable/DoorBehavior.cs</fileName>
+    <timeStamp>2023-06-22T00:16:24.1807022-04:00</timeStamp>
+    <typeFullName>
+      <string>DoorBehavior</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>93dfe96fabe21a44eb0e91cc213b0d77</guid>
+    <fileName>Assets/GeneralScripts/Interactable/GemBehavior.cs</fileName>
+    <timeStamp>2023-06-22T00:16:24.1812275-04:00</timeStamp>
+    <typeFullName>
+      <string>GemBehavior</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>1ea09037de5fabe469cc00b90f9502ba</guid>
+    <fileName>Assets/GeneralScripts/Interactable/HidableBehavior.cs</fileName>
+    <timeStamp>2023-06-21T23:07:35.5923718-04:00</timeStamp>
+    <typeFullName>
+      <string>HidableBehavior</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>6ed4ebbfe5602194a965dc891675dd5d</guid>
+    <fileName>Assets/GeneralScripts/Interactable/InteractableObject.cs</fileName>
+    <timeStamp>2023-06-22T00:16:24.181728-04:00</timeStamp>
+    <typeFullName>
+      <string>InteractableObject</string>
+      <string>IInteractble</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>6ed71eff70b470d4d8a0f9b9bc007ea7</guid>
+    <fileName>Assets/GeneralScripts/Interactable/KeycardBehavior.cs</fileName>
+    <timeStamp>2023-06-22T00:16:24.181728-04:00</timeStamp>
+    <typeFullName>
+      <string>KeycardBehavior</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>0f2f798c80d243042a4f9589aa1bd28b</guid>
+    <fileName>Assets/UI/Menu/AMenu.cs</fileName>
+    <timeStamp>2023-06-21T17:27:55.4121508-04:00</timeStamp>
+    <typeFullName>
+      <string>AMenu</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>2cf4778551a451847b92d9fd4687f02a</guid>
+    <fileName>Assets/UI/Menu/MainMenu.cs</fileName>
+    <timeStamp>2023-06-20T20:25:14.9470602-04:00</timeStamp>
+    <typeFullName>
+      <string>MainMenu</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>d11164f896d98e94ba2768ba9efa9c9c</guid>
+    <fileName>Assets/UI/Menu/PauseMenu.cs</fileName>
+    <timeStamp>2023-06-22T00:20:22.972397-04:00</timeStamp>
+    <typeFullName>
+      <string>PauseMenu</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>9d289cdd9b2aaaa41835ec58053af393</guid>
+    <fileName>Assets/UI/Menu/RebindMenu.cs</fileName>
+    <timeStamp>2023-06-22T00:20:22.9728986-04:00</timeStamp>
+    <typeFullName>
+      <string>RebindMenu</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>84cd9b84e0604a9abafb77712f1df90a</guid>
+    <fileName>Assets/Input System/1.5.1/Rebinding UI/GamepadIconsExample.cs</fileName>
+    <timeStamp>2023-05-16T15:59:56-04:00</timeStamp>
+    <typeFullName>
+      <string>UnityEngine.InputSystem.Samples.RebindUI.GamepadIconsExample</string>
+      <string>UnityEngine.InputSystem.Samples.RebindUI.GamepadIconsExample+GamepadIcons</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>cc11d99b1a6682f4cbc4aba1fcd9ac5d</guid>
+    <fileName>Assets/Input System/1.5.1/Rebinding UI/RebindActionUI.cs</fileName>
+    <timeStamp>2023-06-20T20:25:14.9607852-04:00</timeStamp>
+    <typeFullName>
+      <string>UnityEngine.InputSystem.Samples.RebindUI.RebindActionUI</string>
+      <string>UnityEngine.InputSystem.Samples.RebindUI.RebindActionUI+UpdateBindingUIEvent</string>
+      <string>UnityEngine.InputSystem.Samples.RebindUI.RebindActionUI+InteractiveRebindEvent</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>fa7fa75d154b431893a88cd8aa9c1d10</guid>
+    <fileName>Assets/Input System/1.5.1/Rebinding UI/RebindActionUIEditor.cs</fileName>
+    <timeStamp>2023-05-16T15:59:56-04:00</timeStamp>
+    <typeFullName>
+      <string>UnityEngine.InputSystem.Samples.RebindUI.RebindActionUIEditor</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>5b6c2da2db9374dada6761b5e35121c8</guid>
+    <fileName>Assets/Input System/1.5.1/Rebinding UI/RebindSaveLoad.cs</fileName>
+    <timeStamp>2023-05-16T15:59:56-04:00</timeStamp>
+    <typeFullName>
+      <string>RebindSaveLoad</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>fcf7219bab7fe46a1ad266029b2fee19</guid>
+    <fileName>Assets/Level-Props/AssetStoreOriginals/_SNAPS_PrototypingAssets/About/Scripts/Readme.cs</fileName>
+    <timeStamp>2023-06-22T00:48:50.9289842-04:00</timeStamp>
+    <typeFullName>
+      <string>Readme</string>
+      <string>Readme+Section</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>476cc7d7cd9874016adc216baab94a0a</guid>
+    <fileName>Assets/Level-Props/AssetStoreOriginals/_SNAPS_PrototypingAssets/About/Scripts/Editor/ReadmeEditor.cs</fileName>
+    <timeStamp>2023-06-22T00:48:50.9284838-04:00</timeStamp>
+    <typeFullName>
+      <string>ReadmeEditor</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp-Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+  <TypeDate>
+    <guid>363956ed496c7c442a7a5d2474bffabc</guid>
+    <fileName>Assets/Level-Props/AssetStoreOriginals/_SNAPS_PrototypingAssets/Scripts/Editor/PackageChecker/PackageChecker.cs</fileName>
+    <timeStamp>2023-06-20T20:22:42.4668882-04:00</timeStamp>
+    <typeFullName>
+      <string>SNAP.PackageChecker</string>
+      <string>SNAP.PackageChecker+PackageEntry</string>
+    </typeFullName>
+    <assemblly>Assembly-CSharp-Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assemblly>
+  </TypeDate>
+</ArrayOfTypeDate>
